@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Festival Offers & Special Deals | MGS Jewellery Davanagere</title>
+  <meta name="description" content="MGS Jewellery Festival Offers — 7.99% Lowest Wastage, 100% Off Making Charges, Extra Value on Old Gold. Davanagere's best gold deals.">
+  <link rel="stylesheet" href="global.css">
+  <style>
+    body { padding-top: calc(2.1rem + 4.5rem); }
+    .offers-page { padding: 6rem 7% 8rem; background: var(--ivory); }
+    .offers-page-header { text-align: center; margin-bottom: 5rem; }
+    .offers-page-header .label { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 1rem; }
+
+    /* ACTIVE OFFER HERO */
+    .offer-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+      margin-bottom: 6rem;
+      padding-bottom: 6rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .offer-hero-poster { position: relative; }
+    .offer-hero-poster img { width: 100%; border: 1px solid var(--border-bright); box-shadow: var(--glow-bright); }
+    .offer-hero-badge {
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      background: var(--gold-gradient);
+      color: var(--black);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.5rem 1rem;
+    }
+    .offer-hero-details { padding-top: 1rem; }
+    .offer-hero-details .status-dot {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--success);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .status-dot::before {
+      content: '';
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--success);
+      animation: pulse 2s infinite;
+    }
+    .offer-hero-details h1 { font-size: 2.5rem; margin-bottom: 1rem; color: var(--text-dark); text-shadow: var(--gold-text-shadow); }
+    .offer-hero-details > p { color: var(--body-text); line-height: 1.8; margin-bottom: 2rem; }
+
+    .offer-value-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    .offer-value-cell {
+      padding: 1.2rem;
+      background: #FFFFFF;
+      border: 1px solid rgba(198,167,94,0.14);
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(198,167,94,0.06);
+      border-radius: 10px;
+    }
+    .ovc-value {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      text-shadow: var(--gold-text-shadow);
+    }
+    .ovc-label { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; margin-top: 0.3rem; }
+
+    /* COUNTDOWN (reuse from index) */
+    .big-countdown {
+      background: #FFFFFF;
+      border: 1px solid rgba(198,167,94,0.14);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04), 0 0 30px rgba(198,167,94,0.08);
+    }
+    .bc-label { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.2em; color: var(--gold-dim); margin-bottom: 1rem; text-transform: uppercase; }
+    .bc-display { display: flex; gap: 0.5rem; align-items: center; }
+    .bc-unit { text-align: center; }
+    .bc-unit span:first-child { font-family: var(--font-mono); font-size: 2.5rem; color: var(--gold-bright); display: block; font-weight: 600; }
+    .bc-unit span:last-child { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em; color: var(--gray); text-transform: uppercase; }
+    .bc-sep { font-size: 1.5rem; color: var(--gold-dim); padding-bottom: 1.5rem; }
+
+    /* ALL OFFERS GRID */
+    .offers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .past-offer-card {
+      background: var(--charcoal);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    .past-offer-card:hover { border-color: var(--border-bright); box-shadow: var(--glow); transform: translateY(-3px); }
+    .past-offer-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+    .poc-info { padding: 1.2rem; }
+    .poc-status { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .poc-status.active { color: var(--success); }
+    .poc-status.upcoming { color: var(--gold); }
+    .poc-status.expired { color: var(--gray); }
+    .poc-info h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+    .poc-info p { font-size: 0.8rem; color: var(--white-dim); margin-bottom: 1rem; }
+    .poc-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+    .poc-tag {
+      padding: 0.2rem 0.6rem;
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      border: 1px solid var(--gold-dim);
+      color: var(--gold-dim);
+      text-transform: uppercase;
+    }
+
+    /* OLD GOLD EXCHANGE */
+    .exchange-section {
+      margin-top: 6rem;
+      padding-top: 6rem;
+      border-top: 1px solid var(--border);
+    }
+    .exchange-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .exchange-text .label { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.25em; color: var(--gold); text-transform: uppercase; display: block; margin-bottom: 1rem; }
+    .exchange-text h2 { margin-bottom: 1.2rem; }
+    .exchange-text p { color: var(--white-dim); line-height: 1.8; margin-bottom: 2rem; }
+    .exchange-steps { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
+    .ex-step { display: flex; gap: 1rem; align-items: flex-start; }
+    .ex-step-num {
+      width: 32px; height: 32px; flex-shrink: 0;
+      border: 1px solid var(--gold-dim);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--gold);
+    }
+    .ex-step-text h4 { font-family: var(--font-sans); font-size: 0.9rem; font-weight: 500; margin-bottom: 0.2rem; }
+    .ex-step-text p { font-size: 0.8rem; color: var(--white-dim); margin: 0; }
+
+    .exchange-calc {
+      background: var(--charcoal);
+      border: 1px solid var(--border-bright);
+      padding: 2rem;
+      box-shadow: var(--glow);
+    }
+    .exchange-calc h3 { font-size: 1.2rem; margin-bottom: 1.5rem; color: var(--gold); }
+    .exc-field { margin-bottom: 1rem; }
+    .exc-field label { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray); display: block; margin-bottom: 0.4rem; }
+    .exc-field input, .exc-field select {
+      width: 100%;
+      background: var(--charcoal-light);
+      border: 1px solid var(--border);
+      color: var(--white);
+      padding: 0.7rem 0.9rem;
+      font-size: 0.9rem;
+      font-family: var(--font-sans);
+      outline: none;
+      transition: var(--transition);
+    }
+    .exc-field input:focus, .exc-field select:focus { border-color: var(--gold); }
+
+    @media (max-width: 1024px) {
+      .offer-hero { grid-template-columns: 1fr; }
+      .offers-grid { grid-template-columns: repeat(2, 1fr); }
+      .exchange-inner { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .offers-grid { grid-template-columns: 1fr; }
+      .offer-value-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="gold-ticker">
+  <span class="ticker-label">LIVE RATES ▸</span>
+  <div class="ticker-track">
+    <div class="ticker-item"><span class="metal">22K GOLD / 10g</span><span class="price">₹6,842</span><span class="change up">▲ 0.4%</span></div>
+    <div class="ticker-item"><span class="metal">MGS WASTAGE</span><span class="price" style="color:var(--gold-bright)">7.99%</span><span style="color:var(--gold-dim);font-size:0.6rem">LOWEST IN TOWN</span></div>
+    <div class="ticker-item"><span class="metal">MAKING CHARGES</span><span class="price" style="color:#25D366">100% OFF</span><span style="color:var(--gold-dim);font-size:0.6rem">FESTIVAL OFFERS</span></div>
+    <div class="ticker-item"><span class="metal">22K GOLD / 10g</span><span class="price">₹6,842</span><span class="change up">▲ 0.4%</span></div>
+    <div class="ticker-item"><span class="metal">MGS WASTAGE</span><span class="price" style="color:var(--gold-bright)">7.99%</span></div>
+    <div class="ticker-item"><span class="metal">MAKING CHARGES</span><span class="price" style="color:#25D366">100% OFF</span></div>
+  </div>
+</div>
+
+<nav id="site-navbar" style="top:2.1rem">
+  <a href="index.html" class="nav-logo">MGS JEWELLERY</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="collections.html">Collections</a></li>
+    <li><a href="offers.html" class="active">Offers</a></li>
+    <li><a href="calculator.html">Calculator</a></li>
+    <li><a href="heritage.html">Heritage</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="https://wa.me/919876543210" target="_blank" class="btn btn-whatsapp" style="padding:0.5rem 1.2rem;font-size:0.7rem">✦ WhatsApp</a>
+  </div>
+  <div class="nav-hamburger" id="hamburger-btn"><span></span><span></span><span></span></div>
+</nav>
+<div id="mobile-overlay"></div>
+<div id="mobile-menu">
+  <span class="menu-close" id="menu-close">✕</span>
+  <a href="index.html">Home</a><a href="collections.html">Collections</a>
+  <a href="offers.html">Festival Offers</a><a href="calculator.html">Gold Calculator</a>
+  <a href="heritage.html">Our Heritage</a><a href="admin.html">Admin</a>
+</div>
+
+<main class="offers-page">
+  <div class="offers-page-header animate-in">
+    <span class="label">Limited Period</span>
+    <h1 style="font-family:var(--font-serif);font-size:clamp(2rem,4vw,3.5rem)">Festival Offers & Deals</h1>
+    <p style="color:var(--white-dim);max-width:550px;margin:1rem auto 0">MGS Jewellery's maker-direct advantage — passed directly to you during every major festival.</p>
+    <div class="section-underline"></div>
+  </div>
+
+  <!-- ACTIVE OFFER HERO -->
+  <div class="offer-hero animate-in">
+    <div class="offer-hero-poster image-frame">
+      <img src="assets/diwali_poster.png" alt="Diwali Special Offer — MGS Jewellery Davanagere">
+      <span class="offer-hero-badge">Active Offer</span>
+    </div>
+    <div class="offer-hero-details">
+      <div class="status-dot">Offer Currently Active</div>
+      <h1>Shubh Diwali Collection</h1>
+      <p>This festive season, MGS Jewellery is offering our most generous benefits of the year. As makers, we eliminate showroom overheads and pass every rupee of savings directly to our customers.</p>
+
+      <div class="offer-value-grid">
+        <div class="offer-value-cell">
+          <span class="ovc-value">7.99%</span>
+          <span class="ovc-label">Wastage — Lowest in Davanagere</span>
+        </div>
+        <div class="offer-value-cell">
+          <span class="ovc-value">100% OFF</span>
+          <span class="ovc-label">Making Charges This Diwali</span>
+        </div>
+        <div class="offer-value-cell">
+          <span class="ovc-value">+₹200/g</span>
+          <span class="ovc-label">Extra Value on Old Gold</span>
+        </div>
+        <div class="offer-value-cell">
+          <span class="ovc-value">10% OFF</span>
+          <span class="ovc-label">On All Diamond Jewelry</span>
+        </div>
+      </div>
+
+      <div class="big-countdown">
+        <span class="bc-label">Offer Ends In</span>
+        <div class="bc-display">
+          <div class="bc-unit"><span id="bcd-days">12</span><span>Days</span></div>
+          <span class="bc-sep">:</span>
+          <div class="bc-unit"><span id="bcd-hours">08</span><span>Hrs</span></div>
+          <span class="bc-sep">:</span>
+          <div class="bc-unit"><span id="bcd-mins">45</span><span>Min</span></div>
+          <span class="bc-sep">:</span>
+          <div class="bc-unit"><span id="bcd-secs">22</span><span>Sec</span></div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:1rem;flex-wrap:wrap">
+        <a href="https://wa.me/919876543210?text=Hello%20MGS!%20I%27d%20like%20to%20claim%20the%20Diwali%20offer%20%E2%80%94%20100%25%20off%20making%20charges%20and%207.99%25%20wastage." target="_blank" class="btn btn-whatsapp" id="diwali-claim-btn">✦ Claim This Offer Now</a>
+        <a href="calculator.html" class="btn btn-outline">Calculate My Savings ▸</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALL OFFERS GRID (managed by Admin CMS) -->
+  <div class="section-header animate-in">
+    <span class="label">Our Offers</span>
+    <h2>All Festival Collections</h2>
+    <div class="section-underline"></div>
+  </div>
+
+  <div class="offers-grid animate-in">
+    <div class="past-offer-card">
+      <img src="assets/diwali_poster.png" alt="Diwali Offer">
+      <div class="poc-info">
+        <div class="poc-status active">● Active Now</div>
+        <h3>Shubh Diwali Special</h3>
+        <p>100% making charge waiver + 7.99% wastage + extra ₹200 on old gold exchange.</p>
+        <div class="poc-tags">
+          <span class="poc-tag">100% Making OFF</span>
+          <span class="poc-tag">7.99% Wastage</span>
+          <span class="poc-tag">Old Gold Bonus</span>
+        </div>
+        <a href="https://wa.me/919876543210?text=Diwali%20offer%20inquiry" target="_blank" class="btn btn-whatsapp" style="font-size:0.65rem;padding:0.5rem 0.8rem" id="diwali-wa-btn">✦ Inquire on WhatsApp</a>
+      </div>
+    </div>
+    <div class="past-offer-card">
+      <img src="assets/hero_necklace.png" alt="Akshaya Tritiya">
+      <div class="poc-info">
+        <div class="poc-status upcoming">◈ Upcoming — April 30</div>
+        <h3>Akshaya Tritiya Special</h3>
+        <p>The auspicious gold-buying date. MGS offers exclusive making charge discounts and special bridal sets.</p>
+        <div class="poc-tags">
+          <span class="poc-tag">Bridal Sets</span>
+          <span class="poc-tag">Festival Making Discount</span>
+        </div>
+        <a href="https://wa.me/919876543210?text=Akshaya%20Tritiya%20pre-booking%20inquiry" target="_blank" class="btn btn-outline" style="font-size:0.65rem;padding:0.5rem 0.8rem" id="akshaya-wa-btn">Pre-Book Slot ▸</a>
+      </div>
+    </div>
+    <div class="past-offer-card">
+      <img src="assets/antique_bangles.png" alt="Wedding Season">
+      <div class="poc-info">
+        <div class="poc-status upcoming">◈ Upcoming — Wedding Season</div>
+        <h3>Bridal Wedding Season</h3>
+        <p>Bespoke bridal jewelry at maker-direct prices. Full custom design, transparent charges, HUID certified.</p>
+        <div class="poc-tags">
+          <span class="poc-tag">Bridal Sets</span>
+          <span class="poc-tag">Custom Making</span>
+          <span class="poc-tag">HUID Certified</span>
+        </div>
+        <a href="https://wa.me/919876543210?text=Bridal%20jewelry%20inquiry" target="_blank" class="btn btn-outline" style="font-size:0.65rem;padding:0.5rem 0.8rem" id="bridal-wa-btn">Book Consultation ▸</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- OLD GOLD EXCHANGE -->
+  <div class="exchange-section animate-in">
+    <div class="exchange-inner">
+      <div class="exchange-text">
+        <span class="label">Old Gold Exchange</span>
+        <h2>Maximum Value on Your Old Gold</h2>
+        <p>MGS Jewellery provides one of Davanagere's most transparent and generous old gold exchange programs. Get an additional ₹200 per gram above market rate during festive periods.</p>
+        <div class="exchange-steps">
+          <div class="ex-step">
+            <div class="ex-step-num">01</div>
+            <div class="ex-step-text">
+              <h4>Bring Your Old Gold</h4>
+              <p>Any purity — 22k, 18k, or lower. We accept all forms including old jewelry, coins, or bars.</p>
+            </div>
+          </div>
+          <div class="ex-step">
+            <div class="ex-step-num">02</div>
+            <div class="ex-step-text">
+              <h4>Transparent Assaying</h4>
+              <p>Our goldsmith assays the purity in front of you. No hidden deductions or arbitrary estimates.</p>
+            </div>
+          </div>
+          <div class="ex-step">
+            <div class="ex-step-num">03</div>
+            <div class="ex-step-text">
+              <h4>Best Value + Festival Bonus</h4>
+              <p>Get current market rate + ₹200/g festival bonus when exchanging for new MGS jewelry.</p>
+            </div>
+          </div>
+        </div>
+        <a href="https://wa.me/919876543210?text=I%27d%20like%20to%20exchange%20old%20gold%20at%20MGS%20Jewellery%20Davanagere." target="_blank" class="btn btn-gold" id="gold-exchange-btn">Exchange Old Gold ▸</a>
+      </div>
+      <div class="exchange-calc animate-in">
+        <h3>Old Gold Value Estimator</h3>
+        <div class="exc-field">
+          <label>Old Gold Purity</label>
+          <select id="exc-purity">
+            <option value="22">22K Gold (BIS Certified)</option>
+            <option value="18">18K Gold</option>
+            <option value="14">14K Gold</option>
+            <option value="8">8K or Lower</option>
+          </select>
+        </div>
+        <div class="exc-field">
+          <label>Weight (grams)</label>
+          <input type="number" id="exc-weight" value="20" min="1" step="0.5">
+        </div>
+        <div class="exc-field">
+          <label>Festival Bonus</label>
+          <select id="exc-bonus">
+            <option value="200">+₹200/g — Active Festive Bonus</option>
+            <option value="0">₹0 — Standard Rate</option>
+          </select>
+        </div>
+        <div style="background:var(--charcoal-light);border:1px solid var(--border-bright);padding:1.2rem;margin-top:1rem">
+          <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;font-size:0.85rem">
+            <span style="color:var(--gray);font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase">Base Value</span>
+            <span id="exc-base">₹1,36,840</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:0.8rem;font-size:0.85rem">
+            <span style="color:var(--gray);font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase">Festival Bonus (+₹200/g)</span>
+            <span id="exc-bonus-val" style="color:var(--success)">+₹4,000</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding-top:0.8rem;border-top:1px solid var(--border)">
+            <span style="font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-dim)">You Receive</span>
+            <span id="exc-total" style="font-family:var(--font-serif);font-size:1.5rem;background:var(--gold-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">₹1,40,840</span>
+          </div>
+        </div>
+        <a href="https://wa.me/919876543210?text=I'd%20like%20to%20exchange%20old%20gold%20and%20get%20the%20festive%20bonus." target="_blank" class="btn btn-gold" style="width:100%;justify-content:center;margin-top:1rem" id="exc-whatsapp-btn">✦ Get Exact Quote on WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer id="site-footer">
+  <div class="footer-bottom" style="border-top:none;padding-top:0">
+    <span>© 2024 MGS Jewellery · Est. 1999 · Davanagere · All Rights Reserved</span>
+    <div class="footer-hallmarks"><span>HUID HALLMARK</span><span>BIS 916</span><span>22K PURE GOLD</span></div>
+  </div>
+</footer>
+
+<script src="global.js"></script>
+<script>
+// Countdown
+const offerEnd = new Date(); offerEnd.setDate(offerEnd.getDate() + 12);
+function countdown() {
+  const diff = offerEnd - new Date();
+  if (diff <= 0) return;
+  const pad = n => String(Math.floor(n)).padStart(2,'0');
+  document.getElementById('bcd-days').textContent = pad(diff/86400000);
+  document.getElementById('bcd-hours').textContent = pad((diff%86400000)/3600000);
+  document.getElementById('bcd-mins').textContent = pad((diff%3600000)/60000);
+  document.getElementById('bcd-secs').textContent = pad((diff%60000)/1000);
+}
+setInterval(countdown, 1000); countdown();
+
+// Old Gold Estimator
+const excRates = { 22: 684.2, 18: 562, 14: 437, 8: 250 };
+function calcExchange() {
+  const purity = document.getElementById('exc-purity').value;
+  const weight = parseFloat(document.getElementById('exc-weight').value) || 0;
+  const bonus = parseInt(document.getElementById('exc-bonus').value);
+  const rate = excRates[purity] || 684.2;
+  const base = weight * rate;
+  const bonusAmt = weight * bonus;
+  const total = base + bonusAmt;
+  const fmt = v => '₹' + Math.round(v).toLocaleString('en-IN');
+  document.getElementById('exc-base').textContent = fmt(base);
+  document.getElementById('exc-bonus-val').textContent = '+' + fmt(bonusAmt);
+  document.getElementById('exc-total').textContent = fmt(total);
+}
+['exc-purity','exc-weight','exc-bonus'].forEach(id => document.getElementById(id)?.addEventListener('input', calcExchange));
+calcExchange();
+</script>
+</body>
+</html>
