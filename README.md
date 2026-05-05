@@ -1,3 +1,40 @@
+# MGS Jewellery Admin (scaffold)
+
+This workspace contains a scaffolded Admin Dashboard for MGS Jewellery.
+
+Frontend (client): React + Vite + Tailwind
+Backend (server): Node.js + Express + MongoDB + Cloudinary
+
+Quick start
+
+1. Install dependencies for client and server:
+
+```
+cd client
+npm install
+cd ../server
+npm install
+```
+
+2. Create `.env` in the project root or `server` with credentials (see `.env.example`).
+
+3. Start server:
+
+```
+cd server
+npm run dev
+```
+
+4. Start client:
+
+```
+cd client
+npm run dev
+```
+
+Notes:
+- The backend provides protected routes under `/api/*` and an upload endpoint using Cloudinary. Replace Cloudinary env vars to enable uploads.
+- This scaffold focuses on a luxury visual style (ivory background, gold accents, serif headings). Expand components and API integration as needed.
 # MGS JEWELLERY — Official Website
 
 > **Davanagere's Legacy of Pure Gold · Est. 1999**

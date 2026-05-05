@@ -1,106 +1,32 @@
 /* ===== INDEX.JS — Homepage Logic ===== */
 
-// ────────────────────────────────────────
-// PRODUCT DATABASE
-// ────────────────────────────────────────
-const products = [
-  {
-    id: 'p1',
-    name: 'Temple Kasumalai Set',
-    category: 'necklaces',
-    tag: 'bridal',
-    image: 'assets/kasumalai.png',
-    hallmark: 'HUID',
-    purity: '22K Gold',
-    weight: '48.5 gm',
-    priceLabel: 'Inquire for Price',
-    desc: 'Traditional Lakshmi coin necklace — bridal heirloom craftsmanship'
-  },
-  {
-    id: 'p2',
-    name: 'Heritage Antique Bangles',
-    category: 'bangles',
-    tag: 'bridal',
-    image: 'assets/antique_bangles.png',
-    hallmark: 'HUID',
-    purity: '22K Gold',
-    weight: '38.2 gm',
-    priceLabel: 'Inquire for Price',
-    desc: 'Set of 4 antique-finish temple motif bangles'
-  },
-  {
-    id: 'p3',
-    name: 'Diamond Drop Earrings',
-    category: 'earrings',
-    tag: 'earrings',
-    image: 'assets/diamond_earrings.png',
-    hallmark: 'BIS',
-    purity: '18K Gold + Diamond',
-    weight: '6.4 gm',
-    priceLabel: 'Inquire for Price',
-    desc: 'South Indian floral diamond drop — intricate goldsmith work'
-  },
-  {
-    id: 'p4',
-    name: 'Bridal Mangalsutra',
-    category: 'necklaces',
-    tag: 'bridal',
-    image: 'assets/mangalsutra.png',
-    hallmark: 'BIS',
-    purity: '22K Gold',
-    weight: '22.8 gm',
-    priceLabel: 'Inquire for Price',
-    desc: 'Traditional black bead & gold Mangalsutra with pendant'
-  },
-  {
-    id: 'p5',
-    name: 'Temple Design Bangles',
-    category: 'bangles',
-    tag: 'bangles',
-    image: 'assets/temple_bangles.png',
-    hallmark: 'HUID',
-    purity: '22K Gold',
-    weight: '28.5 gm',
-    priceLabel: 'Inquire for Price',
-    desc: 'Wide Lakshmi embossed bangles — ruby accent, temple design'
-  },
-  {
-    id: 'p6',
-    name: 'Solid Gold Rope Chain',
-    category: 'chains',
-    tag: 'chains',
-    image: 'assets/gold_chain.png',
-    hallmark: 'BIS',
-    purity: '22K Gold',
-    weight: '15.2 gm',
-    priceLabel: 'Inquire for Price',
-    desc: 'Classic solid gold rope chain — timeless 22k craftsmanship'
-  },
-  {
-    id: 'p7',
-    name: 'Floral Emerald Ring',
-    category: 'rings',
-    tag: 'earrings',
-    image: 'assets/ring.png',
-    hallmark: 'HUID',
-    purity: '22K Gold',
-    weight: '4.8 gm',
-    priceLabel: 'Inquire for Price',
-    desc: 'Intricate floral setting with natural emerald centerpiece'
-  },
-  {
-    id: 'p8',
-    name: 'Gold Stud Earrings',
-    category: 'earrings',
-    tag: 'earrings',
-    image: 'assets/studs.png',
-    hallmark: 'BIS',
-    purity: '22K Gold',
-    weight: '3.2 gm',
-    priceLabel: 'Inquire for Price',
-    desc: 'Classic South Indian gold stud earrings — BIS certified'
+// Dynamic product list: will be loaded from server API at runtime
+let products = [];
+
+async function loadProducts() {
+  try {
+    const res = await fetch('/api/products');
+    if (!res.ok) throw new Error('Failed to fetch products');
+    const data = await res.json();
+    // Normalize to fields expected by the UI (provide sensible fallbacks)
+    products = data.map(p => ({
+      id: p._id || p.id,
+      name: p.name || 'Untitled',
+      category: p.category || 'uncategorized',
+      tag: p.tag || '',
+      image: (p.images && p.images[0]) || p.image || 'assets/placeholder.png',
+      images: p.images || (p.image ? [p.image] : []),
+      hallmark: p.hallmark || 'HUID',
+      purity: p.purity || '',
+      weight: p.weight || '',
+      priceLabel: (p.price ? '₹' + p.price.toLocaleString('en-IN') : (p.priceLabel || 'Inquire for Price')),
+      desc: p.description || p.desc || ''
+    }));
+    renderProducts(activeFilter);
+  } catch (e) {
+    console.error('Error loading products', e);
   }
-];
+}
 
 let activeFilter = 'all';
 
@@ -153,8 +79,8 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
   });
 });
 
-// Initial render
-renderProducts();
+// Initial load
+loadProducts();
 
 // ────────────────────────────────────────
 // HERO THUMBNAIL SWITCHER

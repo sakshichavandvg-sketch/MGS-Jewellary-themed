@@ -530,7 +530,7 @@ body { padding-top: calc(2.1rem + 4.5rem); }
   background-clip: text;
   display: block;
 }
-.stat-label { color: var(--muted); font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; }
+.stat-label { color: var(--muted); font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; 
   font-family: var(--font-mono);
   font-size: 0.6rem;
   letter-spacing: 0.1em;
