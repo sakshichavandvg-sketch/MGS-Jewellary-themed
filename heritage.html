@@ -348,8 +348,7 @@
       font-weight: 500;
     }
     .comparison-table td:nth-child(3) { color: var(--gray); }
-    .check { color: var(--success); }
-    .cross { color: #E74C3C; }
+
 
     /* Makers Visual */
     .makers-visual {
@@ -371,11 +370,7 @@
       transform: translateY(-4px);
       box-shadow: var(--glow);
     }
-    .makers-stat-card .icon {
-      font-size: 1.8rem;
-      margin-bottom: 0.8rem;
-      display: block;
-    }
+
     .makers-stat-card .big-num {
       font-family: var(--font-serif);
       font-size: 2.4rem;
@@ -403,7 +398,7 @@
       text-align: left;
       padding: 2rem;
     }
-    .makers-stat-card.wide .icon { font-size: 2.5rem; margin: 0; flex-shrink: 0; }
+
 
     /* ===== CRAFTSMANSHIP ===== */
     #craftsmanship {
@@ -441,11 +436,7 @@
       border-color: var(--border-bright);
       transform: translateY(-4px);
     }
-    .craft-icon {
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
-      display: block;
-    }
+
     .craft-card h3 {
       font-size: 1.25rem;
       color: var(--white);
@@ -469,105 +460,7 @@
       width: 100%;
     }
 
-    /* ===== HALLMARK SECTION ===== */
-    #hallmark {
-      padding: 7rem 5%;
-    }
-    .hallmark-inner {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 5rem;
-      align-items: center;
-    }
-    .hallmark-text h2 {
-      font-size: clamp(1.8rem, 3vw, 3rem);
-      color: var(--white);
-      margin-bottom: 1.2rem;
-    }
-    .hallmark-text p {
-      color: var(--white-dim);
-      font-size: 0.95rem;
-      line-height: 1.9;
-      margin-bottom: 1.5rem;
-    }
-    .hallmark-points {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-    }
-    .hallmark-point {
-      display: flex;
-      gap: 1.2rem;
-      align-items: flex-start;
-    }
-    .hp-icon {
-      width: 36px;
-      height: 36px;
-      border: 1px solid var(--gold-dim);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--gold);
-      font-size: 0.9rem;
-      flex-shrink: 0;
-    }
-    .hp-body h4 {
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.3rem;
-    }
-    .hp-body p {
-      color: var(--white-dim);
-      font-size: 0.85rem;
-      line-height: 1.6;
-      margin: 0;
-    }
-    .hallmark-cert-cards {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-    .cert-card {
-      background: var(--charcoal);
-      border: 1px solid var(--border);
-      padding: 2rem;
-      transition: var(--transition);
-      text-align: center;
-    }
-    .cert-card:hover {
-      border-color: var(--border-bright);
-      box-shadow: var(--glow);
-    }
-    .cert-card .cert-badge {
-      font-family: var(--font-mono);
-      font-size: 1.4rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      background: var(--gold-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      display: block;
-      margin-bottom: 0.5rem;
-    }
-    .cert-card .cert-name {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--white-dim);
-      display: block;
-      margin-bottom: 1rem;
-    }
-    .cert-card p {
-      color: var(--gray);
-      font-size: 0.82rem;
-      line-height: 1.6;
-      margin: 0;
-    }
+
 
     /* ===== COMMUNITY IMPACT ===== */
     #community {
@@ -715,7 +608,7 @@
       border-color: var(--border-bright);
       background: rgba(212,175,55,0.04);
     }
-    .pillar-icon { font-size: 1.8rem; margin-bottom: 1rem; display: block; }
+
     .pillar h4 {
       font-family: var(--font-mono);
       font-size: 0.72rem;
@@ -1034,33 +927,33 @@
         <tbody>
           <tr>
             <td>Wastage Rate</td>
-            <td><span class="check">✔</span> 7.99% (Lowest)</td>
-            <td><span class="cross">✘</span> 12–18%</td>
+            <td>7.99% (Lowest)</td>
+            <td>12–18%</td>
           </tr>
           <tr>
             <td>Making Charges</td>
-            <td><span class="check">✔</span> 100% OFF (Offers)</td>
-            <td><span class="cross">✘</span> ₹300–600/gram</td>
+            <td>100% OFF (Offers)</td>
+            <td>₹300–600/gram</td>
           </tr>
           <tr>
             <td>Gold Purity</td>
-            <td><span class="check">✔</span> HUID + BIS Certified</td>
-            <td>✔ BIS Certified</td>
+            <td>HUID + BIS Certified</td>
+            <td>BIS Certified</td>
           </tr>
           <tr>
             <td>Custom Making</td>
-            <td><span class="check">✔</span> Yes — On-site Goldsmith</td>
-            <td><span class="cross">✘</span> Not Available</td>
+            <td>Yes — On-site Goldsmith</td>
+            <td>Not Available</td>
           </tr>
           <tr>
             <td>Old Gold Exchange</td>
-            <td><span class="check">✔</span> Extra ₹200/g Bonus</td>
-            <td><span class="cross">✘</span> Standard Rate Only</td>
+            <td>Extra ₹200/g Bonus</td>
+            <td>Standard Rate Only</td>
           </tr>
           <tr>
             <td>Transparency</td>
-            <td><span class="check">✔</span> Full price breakdown</td>
-            <td><span class="cross">✘</span> Bundled charges</td>
+            <td>Full price breakdown</td>
+            <td>Bundled charges</td>
           </tr>
         </tbody>
       </table>
@@ -1068,27 +961,27 @@
 
     <div class="makers-visual animate-in">
       <div class="makers-stat-card">
-        <span class="icon">◈</span>
+
         <span class="big-num">7.99%</span>
         <span class="stat-label">Wastage Rate — Lowest in Davanagere</span>
       </div>
       <div class="makers-stat-card">
-        <span class="icon">✦</span>
+
         <span class="big-num">100%</span>
         <span class="stat-label">Making Charges Off on Festival Offers</span>
       </div>
       <div class="makers-stat-card">
-        <span class="icon">◆</span>
+
         <span class="big-num">₹200</span>
         <span class="stat-label">Extra Per Gram on Old Gold Exchange</span>
       </div>
       <div class="makers-stat-card">
-        <span class="icon">⚜</span>
+
         <span class="big-num">24Yr</span>
         <span class="stat-label">Goldsmith Experience — On-Site Crafting</span>
       </div>
       <div class="makers-stat-card wide">
-        <span class="icon" style="font-size:2.5rem">🏆</span>
+
         <div>
           <span class="big-num" style="font-size:1.6rem">Senior Goldsmith & Maker</span>
           <span class="stat-label" style="display:block;margin-top:0.4rem;">Davanagere's only certified maker-direct workshop with on-site crafting, HUID traceability, and bespoke design services.</span>
@@ -1112,115 +1005,44 @@
 
   <div class="craft-grid">
     <div class="craft-card animate-in">
-      <span class="craft-icon">🔥</span>
+
       <h3>Wax-Casting & Lost-Wax Method</h3>
       <p>Traditional South Indian jewellery uses the lost-wax (cire perdue) casting method — where a wax model is encased in clay, the wax melted out, and molten gold poured in. Our master goldsmith has refined this technique over two decades, achieving intricate detail that machines cannot replicate.</p>
-      <span class="craft-tag">◆ Traditional Technique</span>
+      <span class="craft-tag">Traditional Technique</span>
     </div>
     <div class="craft-card animate-in">
-      <span class="craft-icon">⚒</span>
+
       <h3>Hand Filigree & Engraving</h3>
       <p>Filigree is the art of twisting fine gold wire into lace-like patterns. Our craftsmen hand-engrave temple motifs, floral designs, and peacock patterns directly onto gold — creating one-of-a-kind pieces that cannot be mass-produced. Every groove tells the story of the hand that made it.</p>
-      <span class="craft-tag">◆ Artisan Craft</span>
+      <span class="craft-tag">Artisan Craft</span>
     </div>
     <div class="craft-card animate-in">
-      <span class="craft-icon">💎</span>
+
       <h3>Stone Setting & Jadau Work</h3>
       <p>Our goldsmiths are trained in Jadau setting — the royal Rajputana art of embedding uncut gemstones (kundan) into gold. We also set modern-cut rubies, emeralds, and certified diamonds with precision — ensuring stone and gold are in harmony for lifetimes.</p>
-      <span class="craft-tag">◆ Gemstone Excellence</span>
+      <span class="craft-tag">Gemstone Excellence</span>
     </div>
     <div class="craft-card animate-in">
-      <span class="craft-icon">🔬</span>
+
       <h3>Karatmeter Purity Testing</h3>
       <p>Every piece undergoes purity verification with calibrated XRF Karatmeter testing before being sent for BIS/HUID hallmarking. We never presume purity — we prove it. The hallmark stamp on your jewellery is backed by government certification and our own in-house quality assurance.</p>
-      <span class="craft-tag">◆ Quality Assurance</span>
+      <span class="craft-tag">Quality Assurance</span>
     </div>
     <div class="craft-card animate-in">
-      <span class="craft-icon">🎨</span>
+
       <h3>Meenakari Enamel Work</h3>
       <p>Meenakari is the ancient art of filling gold with vibrant enamel colours — peacocks, flowers, and geometric patterns brought to life. Our craftsmen source mineral-based enamel powders and fire them at precise temperatures, creating jewellery that is as much artwork as it is gold.</p>
-      <span class="craft-tag">◆ Heritage Art Form</span>
-    </div>
-    <div class="craft-card animate-in">
-      <span class="craft-icon">🎯</span>
-      <h3>Custom Bespoke Design</h3>
-      <p>As a Maker, we offer what no retailer can — a fully bespoke design journey. Share your vision, reference image, or occasion with our Senior Goldsmith. We provide design sketches within 48 hours, transparent material costing, and craft your unique piece from scratch — entirely on-site.</p>
-      <span class="craft-tag">◆ Exclusive to MGS</span>
-    </div>
-  </div>
-</section>
-
-<div class="gold-rule"></div>
-
-<!-- ===== HALLMARK SECTION ===== -->
-<section id="hallmark">
-  <div class="hallmark-inner">
-
-    <div class="hallmark-text animate-in">
-      <span class="section-label" style="font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:1rem">Certified Purity</span>
-      <h2>What Does HUID & BIS Hallmark Mean for You?</h2>
-      <p>When you buy hallmarked jewellery from MGS, you are not trusting a shopkeeper's word — you are trusting the Government of India's Bureau of Indian Standards (BIS) and the HUID traceability system.</p>
-      <p>India mandated BIS hallmarking for gold jewellery in 2021. MGS adopted it years before it was required — because transparency is not compliance for us. It is our founding value.</p>
-
-      <div class="hallmark-points">
-        <div class="hallmark-point animate-in">
-          <div class="hp-icon">⚜</div>
-          <div class="hp-body">
-            <h4>BIS 916 Hallmark</h4>
-            <p>Confirms your gold is exactly 22 Karat (91.6% pure). Stamped at a BIS-approved Assaying & Hallmarking Centre — not by the jeweller, but by an independent government body.</p>
-          </div>
-        </div>
-        <div class="hallmark-point animate-in">
-          <div class="hp-icon">🔍</div>
-          <div class="hp-body">
-            <h4>HUID — Unique Digital Traceability</h4>
-            <p>Every hallmarked piece gets a 6-character alphanumeric HUID code — permanently stamped and registered in India's national gold registry. You can verify your jewellery's authenticity on the BIS Care App anytime.</p>
-          </div>
-        </div>
-        <div class="hallmark-point animate-in">
-          <div class="hp-icon">🛡</div>
-          <div class="hp-body">
-            <h4>Your Protection as a Buyer</h4>
-            <p>Hallmarked jewellery from MGS can be exchanged anywhere in India at fair market value. The government guarantees the purity — making your gold purchase a safe, lifelong asset.</p>
-          </div>
-        </div>
-        <div class="hallmark-point animate-in">
-          <div class="hp-icon">📱</div>
-          <div class="hp-body">
-            <h4>Verify with BIS Care App</h4>
-            <p>Download the free BIS Care app, enter the HUID code on your jewellery, and instantly verify the metal type, purity, jeweller name, and hallmarking centre. Full transparency at your fingertips.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="hallmark-cert-cards animate-in">
-      <div class="cert-card">
-        <span class="cert-badge">BIS 916</span>
-        <span class="cert-name">Bureau of Indian Standards — 22K Certification</span>
-        <p>All 22K jewellery at MGS carries the BIS 916 hallmark — the gold standard of purity certification in India. Issued by a government-approved independent assaying centre.</p>
-      </div>
-      <div class="cert-card">
-        <span class="cert-badge">HUID</span>
-        <span class="cert-name">Hallmark Unique Identification — Digital Traceability</span>
-        <p>Every piece bears a unique 6-character HUID code registered with the Indian government. Scan it anytime using the BIS Care App to instantly verify authenticity and purity.</p>
-      </div>
-      <div class="cert-card">
-        <span class="cert-badge">18K BIS</span>
-        <span class="cert-name">18 Karat Gold — Diamond Jewellery Certification</span>
-        <p>Our diamond jewellery collection is set in BIS-certified 18K gold (75% pure). Each piece is independently hallmarked and graded for diamond quality before sale.</p>
-      </div>
-      <div class="cert-card" style="background:rgba(37,211,102,0.04);border-color:rgba(37,211,102,0.2)">
-        <span class="cert-badge" style="background:linear-gradient(135deg, #25D366, #128C7E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Verify Now</span>
-        <span class="cert-name">BIS Care App — Free Verification</span>
-        <p>Don't trust — verify. Download India's official BIS Care app and check any HUID hallmarked piece from MGS Jewellery. Your assurance, backed by the Government of India.</p>
-      </div>
+      <span class="craft-tag">Heritage Art Form</span>
     </div>
 
   </div>
 </section>
 
 <div class="gold-rule"></div>
+
+
+
+
 
 <!-- ===== COMMUNITY IMPACT ===== -->
 <section id="community">
@@ -1309,22 +1131,22 @@
 
     <div class="promise-pillars animate-in">
       <div class="pillar">
-        <span class="pillar-icon">◈</span>
+
         <h4>Purity</h4>
         <p>100% BIS & HUID certified gold. Every single piece.</p>
       </div>
       <div class="pillar">
-        <span class="pillar-icon">◇</span>
+
         <h4>Transparency</h4>
         <p>Full price breakdown — gold rate, wastage, making. No hidden charges.</p>
       </div>
       <div class="pillar">
-        <span class="pillar-icon">◆</span>
+
         <h4>Craftsmanship</h4>
         <p>On-site goldsmith. Custom bespoke making. Zero outsourcing.</p>
       </div>
       <div class="pillar">
-        <span class="pillar-icon">⚜</span>
+
         <h4>Value</h4>
         <p>7.99% wastage. Festive making charge waivers. Best exchange rates.</p>
       </div>
@@ -1332,7 +1154,7 @@
 
     <div class="promise-cta animate-in">
       <a href="collections.html" class="btn btn-gold" id="promise-collection-btn">Explore Our Collection ▸</a>
-      <a href="https://wa.me/919876543210?text=Hello%20MGS!%20I%27d%20like%20to%20discuss%20a%20custom%20bespoke%20design." target="_blank" class="btn btn-whatsapp" id="promise-bespoke-btn">✦ Request Bespoke Design</a>
+
     </div>
   </div>
 </section>
@@ -1344,10 +1166,10 @@
       <span class="logo">MGS JEWELLERY</span>
       <p>Senior Goldsmith & Maker, Davanagere since 1999. Crafting pure gold heirlooms with HUID & BIS hallmark certification. Your trust, our legacy.</p>
       <div class="footer-social">
-        <a href="#" id="footer-fb" aria-label="Facebook"><svg class="svg-gold" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.1 3-3.1.9 0 1.8.2 1.8.2v2h-1c-1 0-1.3.6-1.3 1.2V12h2.3l-.4 3h-1.9v7A10 10 0 0 0 22 12z"/></svg></a>
-        <a href="#" id="footer-ig" aria-label="Instagram"><svg class="svg-gold" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5.5a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/></svg></a>
-        <a href="https://wa.me/919876543210" target="_blank" id="footer-wa" aria-label="WhatsApp"><svg class="svg-gold" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20.5 3.5A11 11 0 0 0 3.5 20.5L3 22l1.5-.5A11 11 0 0 0 20.5 3.5zM17 15.2c-.3.9-1.6 1.8-2.2 1.9-.6.2-1 .2-1.8-.1-2.9-1-5-3.6-5.4-3.9-.4-.4-1-.6-1.2-.9-.2-.3-.2-.6.2-1 .4-.4.9-1 1.4-1.1.5-.2 1-.2 1.5.2.5.4 1.6 1.8 3 3 1 1 1.5 1.4 1.8 1.9.3.5.2.9 0 1.1z"/></svg></a>
-        <a href="#" id="footer-yt" aria-label="YouTube"><svg class="svg-gold" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M23 7.5s-.2-1.6-.8-2.3c-.8-1-1.7-1-2.1-1.1C16.6 4 12 4 12 4s-4.6 0-7.1.1c-.4.1-1.3.1-2.1 1.1C2.2 5.9 2 7.5 2 7.5S2 9.2 2 10.8v2.4C2 16.8 4.3 18 4.3 18s1.1.3 3.7.3c2.6 0 7.1.1 7.1.1s4.6 0 7.1-.1c2.6 0 3.7-.3 3.7-.3s2.3-1.2 2.3-3.3v-2.4c0-1.6-.2-3.3-.2-3.3zM9.8 14V8l5.2 3-5.2 3z"/></svg></a>
+        <a href="#" id="footer-fb" aria-label="Facebook">Facebook</a>
+        <a href="#" id="footer-ig" aria-label="Instagram">Instagram</a>
+        <a href="https://wa.me/919876543210" target="_blank" id="footer-wa" aria-label="WhatsApp">WhatsApp</a>
+        <a href="#" id="footer-yt" aria-label="YouTube">YouTube</a>
       </div>
     </div>
     <div class="footer-col">
@@ -1379,10 +1201,7 @@
         <li><a href="https://wa.me/919876543210">✦ WhatsApp</a></li>
         <li><a href="mailto:info@mgsjewellery.com">✉ info@mgsjewellery.com</a></li>
       </ul>
-      <div class="footer-whatsapp-cta">
-        <p>Get exclusive offers on WhatsApp</p>
-        <a href="https://wa.me/919876543210?text=Hi%20MGS!%20Add%20me%20to%20your%20offers%20list." target="_blank" class="btn btn-whatsapp" style="width:100%;justify-content:center;font-size:0.65rem" id="footer-wa-offers">✦ Join Offers List</a>
-      </div>
+
     </div>
   </div>
   <div class="footer-bottom">

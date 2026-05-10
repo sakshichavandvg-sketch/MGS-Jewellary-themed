@@ -130,60 +130,11 @@
       text-transform: uppercase;
     }
 
-    /* OLD GOLD EXCHANGE */
-    .exchange-section {
-      margin-top: 6rem;
-      padding-top: 6rem;
-      border-top: 1px solid var(--border);
-    }
-    .exchange-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-    .exchange-text .label { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.25em; color: var(--gold); text-transform: uppercase; display: block; margin-bottom: 1rem; }
-    .exchange-text h2 { margin-bottom: 1.2rem; }
-    .exchange-text p { color: var(--white-dim); line-height: 1.8; margin-bottom: 2rem; }
-    .exchange-steps { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
-    .ex-step { display: flex; gap: 1rem; align-items: flex-start; }
-    .ex-step-num {
-      width: 32px; height: 32px; flex-shrink: 0;
-      border: 1px solid var(--gold-dim);
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--gold);
-    }
-    .ex-step-text h4 { font-family: var(--font-sans); font-size: 0.9rem; font-weight: 500; margin-bottom: 0.2rem; }
-    .ex-step-text p { font-size: 0.8rem; color: var(--white-dim); margin: 0; }
 
-    .exchange-calc {
-      background: var(--charcoal);
-      border: 1px solid var(--border-bright);
-      padding: 2rem;
-      box-shadow: var(--glow);
-    }
-    .exchange-calc h3 { font-size: 1.2rem; margin-bottom: 1.5rem; color: var(--gold); }
-    .exc-field { margin-bottom: 1rem; }
-    .exc-field label { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray); display: block; margin-bottom: 0.4rem; }
-    .exc-field input, .exc-field select {
-      width: 100%;
-      background: var(--charcoal-light);
-      border: 1px solid var(--border);
-      color: var(--white);
-      padding: 0.7rem 0.9rem;
-      font-size: 0.9rem;
-      font-family: var(--font-sans);
-      outline: none;
-      transition: var(--transition);
-    }
-    .exc-field input:focus, .exc-field select:focus { border-color: var(--gold); }
 
     @media (max-width: 1024px) {
       .offer-hero { grid-template-columns: 1fr; }
       .offers-grid { grid-template-columns: repeat(2, 1fr); }
-      .exchange-inner { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
       .offers-grid { grid-template-columns: 1fr; }
@@ -320,94 +271,10 @@
         <a href="https://wa.me/919876543210?text=Akshaya%20Tritiya%20pre-booking%20inquiry" target="_blank" class="btn btn-outline" style="font-size:0.65rem;padding:0.5rem 0.8rem" id="akshaya-wa-btn">Pre-Book Slot ▸</a>
       </div>
     </div>
-    <div class="past-offer-card">
-      <img src="assets/antique_bangles.png" alt="Wedding Season">
-      <div class="poc-info">
-        <div class="poc-status upcoming">◈ Upcoming — Wedding Season</div>
-        <h3>Bridal Wedding Season</h3>
-        <p>Bespoke bridal jewelry at maker-direct prices. Full custom design, transparent charges, HUID certified.</p>
-        <div class="poc-tags">
-          <span class="poc-tag">Bridal Sets</span>
-          <span class="poc-tag">Custom Making</span>
-          <span class="poc-tag">HUID Certified</span>
-        </div>
-        <a href="https://wa.me/919876543210?text=Bridal%20jewelry%20inquiry" target="_blank" class="btn btn-outline" style="font-size:0.65rem;padding:0.5rem 0.8rem" id="bridal-wa-btn">Book Consultation ▸</a>
-      </div>
-    </div>
+
   </div>
 
-  <!-- OLD GOLD EXCHANGE -->
-  <div class="exchange-section animate-in">
-    <div class="exchange-inner">
-      <div class="exchange-text">
-        <span class="label">Old Gold Exchange</span>
-        <h2>Maximum Value on Your Old Gold</h2>
-        <p>MGS Jewellery provides one of Davanagere's most transparent and generous old gold exchange programs. Get an additional ₹200 per gram above market rate during festive periods.</p>
-        <div class="exchange-steps">
-          <div class="ex-step">
-            <div class="ex-step-num">01</div>
-            <div class="ex-step-text">
-              <h4>Bring Your Old Gold</h4>
-              <p>Any purity — 22k, 18k, or lower. We accept all forms including old jewelry, coins, or bars.</p>
-            </div>
-          </div>
-          <div class="ex-step">
-            <div class="ex-step-num">02</div>
-            <div class="ex-step-text">
-              <h4>Transparent Assaying</h4>
-              <p>Our goldsmith assays the purity in front of you. No hidden deductions or arbitrary estimates.</p>
-            </div>
-          </div>
-          <div class="ex-step">
-            <div class="ex-step-num">03</div>
-            <div class="ex-step-text">
-              <h4>Best Value + Festival Bonus</h4>
-              <p>Get current market rate + ₹200/g festival bonus when exchanging for new MGS jewelry.</p>
-            </div>
-          </div>
-        </div>
-        <a href="https://wa.me/919876543210?text=I%27d%20like%20to%20exchange%20old%20gold%20at%20MGS%20Jewellery%20Davanagere." target="_blank" class="btn btn-gold" id="gold-exchange-btn">Exchange Old Gold ▸</a>
-      </div>
-      <div class="exchange-calc animate-in">
-        <h3>Old Gold Value Estimator</h3>
-        <div class="exc-field">
-          <label>Old Gold Purity</label>
-          <select id="exc-purity">
-            <option value="22">22K Gold (BIS Certified)</option>
-            <option value="18">18K Gold</option>
-            <option value="14">14K Gold</option>
-            <option value="8">8K or Lower</option>
-          </select>
-        </div>
-        <div class="exc-field">
-          <label>Weight (grams)</label>
-          <input type="number" id="exc-weight" value="20" min="1" step="0.5">
-        </div>
-        <div class="exc-field">
-          <label>Festival Bonus</label>
-          <select id="exc-bonus">
-            <option value="200">+₹200/g — Active Festive Bonus</option>
-            <option value="0">₹0 — Standard Rate</option>
-          </select>
-        </div>
-        <div style="background:var(--charcoal-light);border:1px solid var(--border-bright);padding:1.2rem;margin-top:1rem">
-          <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;font-size:0.85rem">
-            <span style="color:var(--gray);font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase">Base Value</span>
-            <span id="exc-base">₹1,36,840</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;margin-bottom:0.8rem;font-size:0.85rem">
-            <span style="color:var(--gray);font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase">Festival Bonus (+₹200/g)</span>
-            <span id="exc-bonus-val" style="color:var(--success)">+₹4,000</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;padding-top:0.8rem;border-top:1px solid var(--border)">
-            <span style="font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-dim)">You Receive</span>
-            <span id="exc-total" style="font-family:var(--font-serif);font-size:1.5rem;background:var(--gold-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">₹1,40,840</span>
-          </div>
-        </div>
-        <a href="https://wa.me/919876543210?text=I'd%20like%20to%20exchange%20old%20gold%20and%20get%20the%20festive%20bonus." target="_blank" class="btn btn-gold" style="width:100%;justify-content:center;margin-top:1rem" id="exc-whatsapp-btn">✦ Get Exact Quote on WhatsApp</a>
-      </div>
-    </div>
-  </div>
+
 
 </main>
 
@@ -433,23 +300,7 @@ function countdown() {
 }
 setInterval(countdown, 1000); countdown();
 
-// Old Gold Estimator
-const excRates = { 22: 684.2, 18: 562, 14: 437, 8: 250 };
-function calcExchange() {
-  const purity = document.getElementById('exc-purity').value;
-  const weight = parseFloat(document.getElementById('exc-weight').value) || 0;
-  const bonus = parseInt(document.getElementById('exc-bonus').value);
-  const rate = excRates[purity] || 684.2;
-  const base = weight * rate;
-  const bonusAmt = weight * bonus;
-  const total = base + bonusAmt;
-  const fmt = v => '₹' + Math.round(v).toLocaleString('en-IN');
-  document.getElementById('exc-base').textContent = fmt(base);
-  document.getElementById('exc-bonus-val').textContent = '+' + fmt(bonusAmt);
-  document.getElementById('exc-total').textContent = fmt(total);
-}
-['exc-purity','exc-weight','exc-bonus'].forEach(id => document.getElementById(id)?.addEventListener('input', calcExchange));
-calcExchange();
+
 </script>
 </body>
 </html>

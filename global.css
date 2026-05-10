@@ -365,8 +365,7 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.6rem); }
 .footer-col ul li { margin-bottom:0.8rem; }
 .footer-col ul li a { color:var(--muted); font-size:0.85rem; transition:var(--transition); }
 .footer-col ul li a:hover { color:var(--gold); padding-left:5px; }
-.footer-whatsapp-cta { margin-top:1rem; padding:1rem; border:1px solid rgba(37,211,102,0.3); background:rgba(37,211,102,0.05); }
-.footer-whatsapp-cta p { color:var(--muted); font-size:0.8rem; margin-bottom:0.8rem; }
+
 .footer-bottom {
   border-top:1px solid var(--border); padding-top:2rem;
   display:flex; justify-content:space-between; align-items:center;
@@ -394,7 +393,7 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.6rem); }
 .menu-close { position:absolute; top:1.5rem; right:1.5rem; font-size:1.5rem; color:var(--gold); cursor:pointer; }
 
 /* ===== CARD ELEVATION ===== */
-.card-elevated, .product-card, .store-card, .calc-mini-widget, .hero-image-container, .offer-poster-main, .bespoke-form {
+.card-elevated, .product-card, .store-card, .calc-mini-widget, .hero-image-container, .offer-poster-main {
   box-shadow:0 10px 30px rgba(0,0,0,0.06), 0 0 40px rgba(198,167,94,0.09);
   border:1px solid rgba(198,167,94,0.20);
   border-radius:16px;

@@ -162,35 +162,6 @@ document.getElementById('mini-weight')?.addEventListener('input', calcMiniGold);
 document.getElementById('mini-purity')?.addEventListener('change', calcMiniGold);
 calcMiniGold();
 
-// ────────────────────────────────────────
-// WHATSAPP LIST BUILDER FORM
-// ────────────────────────────────────────
-function handleListBuilderSubmit(e) {
-  e.preventDefault();
-  const name = document.getElementById('lb-name')?.value;
-  const phone = document.getElementById('lb-phone')?.value;
-  if (!name || !phone) return false;
-  const msg = `Hello MGS Jewellery! I'm ${name} and I'd like to join your exclusive offers WhatsApp list. My number is ${phone}.`;
-  window.open(`https://wa.me/919876543210?text=${encodeURIComponent(msg)}`, '_blank');
-  showToast('✦ Redirecting to WhatsApp — you\'re joining the VIP list!');
-  document.getElementById('lb-form')?.reset();
-  return false;
-}
 
-// ────────────────────────────────────────
-// BESPOKE FORM SUBMIT
-// ────────────────────────────────────────
-function handleBespokeSubmit(e) {
-  e.preventDefault();
-  const name = document.getElementById('bespoke-name')?.value;
-  const phone = document.getElementById('bespoke-phone')?.value;
-  const type = document.getElementById('bespoke-type')?.value;
-  const budget = document.getElementById('bespoke-budget')?.value;
-  const desc = document.getElementById('bespoke-desc')?.value;
 
-  const msg = `Hello MGS Jewellery! I'd like to request a custom design.\n\n*Name:* ${name}\n*Jewelry Type:* ${type}\n*Budget:* ${budget || 'Not specified'}\n*Design Vision:* ${desc}`;
-  window.open(`https://wa.me/919876543210?text=${encodeURIComponent(msg)}`, '_blank');
-  showToast('✦ Custom design request sent! Our Goldsmith will contact you shortly.');
-  document.getElementById('bespoke-form')?.reset();
-  return false;
-}
+

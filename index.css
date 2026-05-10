@@ -635,42 +635,7 @@ body { padding-top: calc(2.1rem + 4.5rem); }
   font-family: var(--font-mono);
 }
 
-/* ===== WHATSAPP LIST BUILDER ===== */
-#list-builder {
-  padding: 7rem 7%;
-  background: var(--section-contrast);
-  border-top: 1px solid var(--border);
-  text-align: center;
-}
-.list-builder-inner { max-width: 600px; margin: 0 auto; }
-.lb-icon {
-  font-size: 2rem;
-  color: var(--gold);
-  display: block;
-  margin-bottom: 1.5rem;
-  animation: pulse 3s infinite;
-}
-#list-builder h2 { margin-bottom: 1rem; }
-#list-builder p { color: var(--body-text); margin-bottom: 2.5rem; }
-.lb-form {
-  display: flex;
-  gap: 0.6rem;
-  max-width: 550px;
-  margin: 0 auto 1rem;
-}
-.lb-form input {
-  flex: 1;
-  background: var(--charcoal);
-  border: 1px solid var(--border);
-  color: var(--white);
-  padding: 0.8rem 1rem;
-  font-family: var(--font-sans);
-  font-size: 0.9rem;
-  outline: none;
-  transition: var(--transition);
-}
-.lb-form input:focus { border-color: var(--gold); }
-.lb-note { font-size: 0.72rem; color: var(--gray); font-family: var(--font-mono); }
+
 
 /* ===== STORES ===== */
 #stores {
@@ -724,90 +689,14 @@ body { padding-top: calc(2.1rem + 4.5rem); }
 .whatsapp-card { border-color: rgba(37,211,102,0.2); }
 .whatsapp-card:hover { border-color: rgba(37,211,102,0.5); box-shadow: 0 0 30px rgba(37,211,102,0.1); }
 
-/* ===== BESPOKE SECTION ===== */
-#bespoke {
-  padding: 8rem 7%;
-  background: var(--section-contrast);
-  border-top: 1px solid var(--border);
-}
-.bespoke-inner {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 5rem;
-  align-items: start;
-}
-.bespoke-text .label {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.25em;
-  color: var(--gold);
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-  display: block;
-}
-.bespoke-text h2 { margin-bottom: 1.2rem; }
-.bespoke-text p { color: var(--body-text); margin-bottom: 2rem; line-height: 1.8; }
-.bespoke-features {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  font-size: 0.85rem;
-  color: var(--muted);
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
-}
-.bespoke-form {
-  background: var(--charcoal);
-  border: 1px solid var(--border);
-  padding: 2.5rem;
-}
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 1.2rem;
-}
-.form-group label {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--gray);
-}
-.form-group input,
-.form-group select,
-.form-group textarea {
-  background: var(--charcoal-light);
-  border: 1px solid var(--border);
-  color: var(--white);
-  padding: 0.8rem 1rem;
-  font-family: var(--font-sans);
-  font-size: 0.9rem;
-  outline: none;
-  transition: var(--transition);
-  resize: none;
-}
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus { border-color: var(--gold); box-shadow: 0 0 10px rgba(212,175,55,0.1); }
-.form-group select option { background: var(--charcoal); color: var(--white); }
-.form-note {
-  text-align: center;
-  margin-top: 1rem;
-  font-size: 0.72rem;
-  color: var(--gray);
-  font-family: var(--font-mono);
-}
-.text-center { text-align: center; }
+
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
   #hero { grid-template-columns: 1fr; gap: 3rem; padding-top: 5rem; text-align: center; }
   .hero-content { align-items: center; display: flex; flex-direction: column; }
   .hero-product-showcase { max-width: 500px; margin: 0 auto; }
-  .offers-layout, .heritage-inner, .calc-teaser-inner, .bespoke-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .offers-layout, .heritage-inner, .calc-teaser-inner { grid-template-columns: 1fr; gap: 2.5rem; }
   .stores-grid { grid-template-columns: 1fr 1fr; }
   .heritage-img-frame img { height: 350px; }
 }
@@ -819,8 +708,8 @@ body { padding-top: calc(2.1rem + 4.5rem); }
   .strip-grid { flex-direction: column; text-align: center; }
   .strip-divider { width: 60px; height: 1px; }
   .stores-grid { grid-template-columns: 1fr; }
-  .lb-form { flex-direction: column; }
+
   .form-row { grid-template-columns: 1fr; }
-  .bespoke-form { padding: 1.5rem; }
+
   .offer-actions { flex-direction: column; }
 }
