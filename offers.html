@@ -146,13 +146,16 @@
 
 <div id="gold-ticker">
   <span class="ticker-label">LIVE RATES ▸</span>
-  <div class="ticker-track">
-    <div class="ticker-item"><span class="metal">22K GOLD / 10g</span><span class="price">₹6,842</span><span class="change up">▲ 0.4%</span></div>
-    <div class="ticker-item"><span class="metal">MGS WASTAGE</span><span class="price" style="color:var(--gold-bright)">7.99%</span><span style="color:var(--gold-dim);font-size:0.6rem">LOWEST IN TOWN</span></div>
-    <div class="ticker-item"><span class="metal">MAKING CHARGES</span><span class="price" style="color:#25D366">100% OFF</span><span style="color:var(--gold-dim);font-size:0.6rem">FESTIVAL OFFERS</span></div>
-    <div class="ticker-item"><span class="metal">22K GOLD / 10g</span><span class="price">₹6,842</span><span class="change up">▲ 0.4%</span></div>
-    <div class="ticker-item"><span class="metal">MGS WASTAGE</span><span class="price" style="color:var(--gold-bright)">7.99%</span></div>
-    <div class="ticker-item"><span class="metal">MAKING CHARGES</span><span class="price" style="color:#25D366">100% OFF</span></div>
+  <div class="ticker-track" id="ticker-track">
+    <div class="ticker-item" id="t-gold22"><span class="metal">22K GOLD / 10g</span><span class="price" id="gold22">₹6,842</span><span class="change up" id="gold22c">▲ 0.4%</span></div>
+    <div class="ticker-item" id="t-gold24"><span class="metal">24K GOLD / 10g</span><span class="price" id="gold24">₹7,490</span><span class="change up" id="gold24c">▲ 0.3%</span></div>
+    <div class="ticker-item" id="t-silver"><span class="metal">SILVER / kg</span><span class="price" id="silver">₹89,200</span><span class="change down" id="silverc">▼ 0.1%</span></div>
+    <div class="ticker-item" id="t-custom"><span class="metal" id="ticker-custom" style="color:var(--gold-bright)">✦ LOWEST WASTAGE & LOWEST MAKING CHARGES IN MGS ✦</span></div>
+    <!-- Duplicate for seamless scroll -->
+    <div class="ticker-item" id="t-gold22-dup"><span class="metal">22K GOLD / 10g</span><span class="price" id="gold22-dup">₹6,842</span><span class="change up" id="gold22c-dup">▲ 0.4%</span></div>
+    <div class="ticker-item" id="t-gold24-dup"><span class="metal">24K GOLD / 10g</span><span class="price" id="gold24-dup">₹7,490</span><span class="change up" id="gold24c-dup">▲ 0.3%</span></div>
+    <div class="ticker-item" id="t-silver-dup"><span class="metal">SILVER / kg</span><span class="price" id="silver-dup">₹89,200</span><span class="change down" id="silverc-dup">▼ 0.1%</span></div>
+    <div class="ticker-item" id="t-custom-dup"><span class="metal" id="ticker-custom-dup" style="color:var(--gold-bright)">✦ LOWEST WASTAGE & LOWEST MAKING CHARGES IN MGS ✦</span></div>
   </div>
 </div>
 
@@ -186,93 +189,24 @@
     <div class="section-underline"></div>
   </div>
 
-  <!-- ACTIVE OFFER HERO -->
-  <div class="offer-hero animate-in">
-    <div class="offer-hero-poster image-frame">
-      <img src="assets/diwali_poster.png" alt="Diwali Special Offer — MGS Jewellery Davanagere">
-      <span class="offer-hero-badge">Active Offer</span>
-    </div>
-    <div class="offer-hero-details">
-      <div class="status-dot">Offer Currently Active</div>
-      <h1>Shubh Diwali Collection</h1>
-      <p>This festive season, MGS Jewellery is offering our most generous benefits of the year. As makers, we eliminate showroom overheads and pass every rupee of savings directly to our customers.</p>
-
-      <div class="offer-value-grid">
-        <div class="offer-value-cell">
-          <span class="ovc-value">7.99%</span>
-          <span class="ovc-label">Wastage — Lowest in Davanagere</span>
-        </div>
-        <div class="offer-value-cell">
-          <span class="ovc-value">100% OFF</span>
-          <span class="ovc-label">Making Charges This Diwali</span>
-        </div>
-        <div class="offer-value-cell">
-          <span class="ovc-value">+₹200/g</span>
-          <span class="ovc-label">Extra Value on Old Gold</span>
-        </div>
-        <div class="offer-value-cell">
-          <span class="ovc-value">10% OFF</span>
-          <span class="ovc-label">On All Diamond Jewelry</span>
-        </div>
-      </div>
-
-      <div class="big-countdown">
-        <span class="bc-label">Offer Ends In</span>
-        <div class="bc-display">
-          <div class="bc-unit"><span id="bcd-days">12</span><span>Days</span></div>
-          <span class="bc-sep">:</span>
-          <div class="bc-unit"><span id="bcd-hours">08</span><span>Hrs</span></div>
-          <span class="bc-sep">:</span>
-          <div class="bc-unit"><span id="bcd-mins">45</span><span>Min</span></div>
-          <span class="bc-sep">:</span>
-          <div class="bc-unit"><span id="bcd-secs">22</span><span>Sec</span></div>
-        </div>
-      </div>
-
-      <div style="display:flex;gap:1rem;flex-wrap:wrap">
-        <a href="https://wa.me/919876543210?text=Hello%20MGS!%20I%27d%20like%20to%20claim%20the%20Diwali%20offer%20%E2%80%94%20100%25%20off%20making%20charges%20and%207.99%25%20wastage." target="_blank" class="btn btn-whatsapp" id="diwali-claim-btn">✦ Claim This Offer Now</a>
-        <a href="calculator.html" class="btn btn-outline">Calculate My Savings ▸</a>
-      </div>
+  <!-- ACTIVE OFFER HERO (Dynamic) -->
+  <div id="hero-offer-container">
+    <div class="text-center py-20 bg-white/50 rounded-2xl border-2 border-dashed border-gold/20">
+      <p class="text-gold font-serif text-xl">Loading Latest Offers...</p>
     </div>
   </div>
 
-  <!-- ALL OFFERS GRID (managed by Admin CMS) -->
-  <div class="section-header animate-in">
+  <!-- ALL OFFERS GRID -->
+  <div class="section-header animate-in mt-20">
     <span class="label">Our Offers</span>
     <h2>All Festival Collections</h2>
     <div class="section-underline"></div>
   </div>
 
-  <div class="offers-grid animate-in">
-    <div class="past-offer-card">
-      <img src="assets/diwali_poster.png" alt="Diwali Offer">
-      <div class="poc-info">
-        <div class="poc-status active">● Active Now</div>
-        <h3>Shubh Diwali Special</h3>
-        <p>100% making charge waiver + 7.99% wastage + extra ₹200 on old gold exchange.</p>
-        <div class="poc-tags">
-          <span class="poc-tag">100% Making OFF</span>
-          <span class="poc-tag">7.99% Wastage</span>
-          <span class="poc-tag">Old Gold Bonus</span>
-        </div>
-        <a href="https://wa.me/919876543210?text=Diwali%20offer%20inquiry" target="_blank" class="btn btn-whatsapp" style="font-size:0.65rem;padding:0.5rem 0.8rem" id="diwali-wa-btn">✦ Inquire on WhatsApp</a>
-      </div>
-    </div>
-    <div class="past-offer-card">
-      <img src="assets/hero_necklace.png" alt="Akshaya Tritiya">
-      <div class="poc-info">
-        <div class="poc-status upcoming">◈ Upcoming — April 30</div>
-        <h3>Akshaya Tritiya Special</h3>
-        <p>The auspicious gold-buying date. MGS offers exclusive making charge discounts and special bridal sets.</p>
-        <div class="poc-tags">
-          <span class="poc-tag">Bridal Sets</span>
-          <span class="poc-tag">Festival Making Discount</span>
-        </div>
-        <a href="https://wa.me/919876543210?text=Akshaya%20Tritiya%20pre-booking%20inquiry" target="_blank" class="btn btn-outline" style="font-size:0.65rem;padding:0.5rem 0.8rem" id="akshaya-wa-btn">Pre-Book Slot ▸</a>
-      </div>
-    </div>
-
+  <div class="offers-grid animate-in" id="offers-grid">
+    <!-- Managed by JS -->
   </div>
+
 
 
 
@@ -287,20 +221,142 @@
 
 <script src="global.js"></script>
 <script>
-// Countdown
-const offerEnd = new Date(); offerEnd.setDate(offerEnd.getDate() + 12);
-function countdown() {
-  const diff = offerEnd - new Date();
-  if (diff <= 0) return;
-  const pad = n => String(Math.floor(n)).padStart(2,'0');
-  document.getElementById('bcd-days').textContent = pad(diff/86400000);
-  document.getElementById('bcd-hours').textContent = pad((diff%86400000)/3600000);
-  document.getElementById('bcd-mins').textContent = pad((diff%3600000)/60000);
-  document.getElementById('bcd-secs').textContent = pad((diff%60000)/1000);
+function resolveImageUrl(path) {
+  if (!path) return null;
+  if (path.startsWith('http') || path.startsWith('blob:') || path.startsWith('data:')) return path;
+  // If it starts with /uploads or assets, it's already an absolute or correct relative path
+  return path;
 }
-setInterval(countdown, 1000); countdown();
+
+async function loadOffers() {
+  try {
+    const res = await fetch('/api/offers');
+    const offers = await res.json();
+    const active = offers.filter(o => o.active);
+    
+    if (active.length > 0) {
+      renderHeroOffer(active[0]);
+    }
+    renderAllOffers(offers);
+    
+    // Trigger animations for the newly added content
+    if (window.triggerAnimations) window.triggerAnimations();
+  } catch (e) {
+    console.error('Error loading offers', e);
+  }
+}
+
+function renderHeroOffer(offer) {
+  const container = document.getElementById('hero-offer-container');
+  if (!container) return;
+
+  container.innerHTML = `
+    <div class="offer-hero animate-in">
+      <div class="offer-hero-poster image-frame">
+        <img src="${resolveImageUrl(offer.poster) || 'assets/diwali_poster.png'}" alt="${offer.title}">
+        <span class="offer-hero-badge">Active Offer</span>
+      </div>
+      <div class="offer-hero-details">
+        <div class="status-dot">Offer Currently Active</div>
+        <h1>${offer.title}</h1>
+        <p>${offer.description}</p>
+
+        <div class="offer-value-grid">
+          <div class="offer-value-cell">
+            <span class="ovc-value">${offer.wastage}</span>
+            <span class="ovc-label">Wastage — Lowest in Davanagere</span>
+          </div>
+          <div class="offer-value-cell">
+            <span class="ovc-value">${offer.discount}</span>
+            <span class="ovc-label">Making Charges OFF</span>
+          </div>
+          ${offer.extraValue ? `
+            <div class="offer-value-cell">
+              <span class="ovc-value">${offer.extraValue}</span>
+              <span class="ovc-label">Extra Value on Old Gold</span>
+            </div>
+          ` : ''}
+          <div class="offer-value-cell">
+            <span class="ovc-value">BIS 916</span>
+            <span class="ovc-label">Certified Purity</span>
+          </div>
+        </div>
+
+        <div class="big-countdown">
+          <span class="bc-label">Offer Ends In</span>
+          <div class="bc-display">
+            <div class="bc-unit"><span id="bcd-days">--</span><span>Days</span></div>
+            <span class="bc-sep">:</span>
+            <div class="bc-unit"><span id="bcd-hours">--</span><span>Hrs</span></div>
+            <span class="bc-sep">:</span>
+            <div class="bc-unit"><span id="bcd-mins">--</span><span>Min</span></div>
+            <span class="bc-sep">:</span>
+            <div class="bc-unit"><span id="bcd-secs">--</span><span>Sec</span></div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:1rem;flex-wrap:wrap">
+          <a href="https://wa.me/919876543210?text=I%27d%20like%20to%20claim%20the%20${encodeURIComponent(offer.title)}" target="_blank" class="btn btn-whatsapp">✦ Claim This Offer Now</a>
+          <a href="calculator.html" class="btn btn-outline">Calculate My Savings ▸</a>
+        </div>
+      </div>
+    </div>
+  `;
+
+  if (offer.endDate) {
+    const offerEnd = new Date(offer.endDate);
+    function countdown() {
+      const diff = offerEnd - new Date();
+      if (diff <= 0) {
+        document.querySelector('.big-countdown').style.display = 'none';
+        return;
+      }
+      const pad = n => String(Math.floor(n)).padStart(2,'0');
+      const d = document.getElementById('bcd-days');
+      const h = document.getElementById('bcd-hours');
+      const m = document.getElementById('bcd-mins');
+      const s = document.getElementById('bcd-secs');
+      if (d) d.textContent = pad(diff/86400000);
+      if (h) h.textContent = pad((diff%86400000)/3600000);
+      if (m) m.textContent = pad((diff%3600000)/60000);
+      if (s) s.textContent = pad((diff%60000)/1000);
+    }
+    setInterval(countdown, 1000); 
+    countdown();
+  } else {
+    const cd = document.querySelector('.big-countdown');
+    if (cd) cd.style.display = 'none';
+  }
+}
+
+function renderAllOffers(offers) {
+  const grid = document.getElementById('offers-grid');
+  if (!grid) return;
+  
+  if (offers.length === 0) {
+    grid.innerHTML = '<p class="text-center py-10 text-gray-500 col-span-full">No other offers available at this time.</p>';
+    return;
+  }
+
+  grid.innerHTML = offers.map(o => `
+    <div class="past-offer-card animate-in">
+      <img src="${resolveImageUrl(o.poster) || 'assets/placeholder_poster.png'}" alt="${o.title}">
+      <div class="poc-info">
+        <div class="poc-status ${o.active ? 'active' : 'expired'}">${o.active ? '● Active Now' : '◌ Expired'}</div>
+        <h3>${o.title}</h3>
+        <p>${o.description.substring(0, 100)}...</p>
+        <div class="poc-tags">
+          <span class="poc-tag">${o.wastage} Wastage</span>
+          <span class="poc-tag">${o.discount} OFF Making</span>
+        </div>
+        <a href="https://wa.me/919876543210?text=I'm interested in the ${encodeURIComponent(o.title)}" target="_blank" class="btn btn-whatsapp" style="font-size:0.65rem;padding:0.5rem 0.8rem">✦ Inquire on WhatsApp</a>
+      </div>
+    </div>
+  `).join('');
+}
 
 
+loadOffers();
 </script>
 </body>
 </html>

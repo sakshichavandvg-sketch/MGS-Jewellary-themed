@@ -300,7 +300,8 @@ body { padding-top: calc(2.1rem + 4.5rem); }
   align-items: flex-end;
   padding: 1rem;
 }
-.product-card:hover .product-card-overlay { opacity: 1; }
+.product-card:hover .product-card-overlay { opacity: 0; }
+.pc-price { display: none !important; }
 .product-card-info {
   padding: 1.2rem;
   border-top: 1px solid var(--border);

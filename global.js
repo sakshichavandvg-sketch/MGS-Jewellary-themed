@@ -40,50 +40,88 @@ mobileOverlay?.addEventListener('click', closeMenu);
 // ────────────────────────────────────────
 // SCROLL ANIMATION OBSERVER
 // ────────────────────────────────────────
-const animObserver = new IntersectionObserver((entries) => {
+window.animObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry, i) => {
     if (entry.isIntersecting) {
       setTimeout(() => {
         entry.target.classList.add('visible');
       }, i * 100);
-      animObserver.unobserve(entry.target);
+      window.animObserver.unobserve(entry.target);
     }
   });
 }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-document.querySelectorAll('.animate-in').forEach(el => animObserver.observe(el));
-
-// ────────────────────────────────────────
-// LIVE GOLD RATE TICKER (simulated with slight variation)
-// ────────────────────────────────────────
-const BASE_RATES = {
-  gold22: 68420,  // per 10g in paise * 10 = rupees * 100
-  gold24: 74900,
-  silver: 89200
+window.triggerAnimations = () => {
+  document.querySelectorAll('.animate-in:not(.visible)').forEach(el => window.animObserver.observe(el));
 };
 
+window.triggerAnimations();
+
+// ────────────────────────────────────────
+// DYNAMIC SETTINGS & GOLD RATES
+// ────────────────────────────────────────
+window.mgsSettings = {};
+window.liveGoldRates = { 22: 14225, 24: 14936, silver: 285 };
+
 function formatINR(amount) {
-  return '₹' + amount.toLocaleString('en-IN');
+  return '₹' + Math.round(amount).toLocaleString('en-IN');
 }
 
-function updateTicker() {
-  const vary = (base, pct = 0.002) => {
-    return Math.round(base * (1 + (Math.random() - 0.5) * pct));
-  };
-  const g22 = vary(BASE_RATES.gold22);
-  const g24 = vary(BASE_RATES.gold24);
-  const sil = vary(BASE_RATES.silver, 0.004);
-
-  const g22El = document.getElementById('gold22');
-  const g24El = document.getElementById('gold24');
-  const silvEl = document.getElementById('silver');
-
-  if (g22El) g22El.textContent = formatINR(g22);
-  if (g24El) g24El.textContent = formatINR(g24);
-  if (silvEl) silvEl.textContent = formatINR(sil);
+async function fetchSettings() {
+  try {
+    const res = await fetch('/api/settings');
+    const data = await res.json();
+    window.mgsSettings = data;
+    applySettings(data);
+  } catch (e) {
+    console.error('Failed to fetch settings', e);
+  }
 }
 
-setInterval(updateTicker, 5000);
+function applySettings(s) {
+  // Apply Hero Title/Subtitle if on homepage
+  const heroTitle = document.querySelector('.hero-title');
+  const heroSubtitle = document.querySelector('.hero-subtitle');
+  if (heroTitle && s.heroTitle) heroTitle.innerHTML = s.heroTitle.replace(/\n/g, '<br>');
+  if (heroSubtitle && s.heroSubtitle) heroSubtitle.textContent = s.heroSubtitle;
+}
+
+async function updateTicker() {
+  try {
+    const res = await fetch('/api/rates');
+    const data = await res.json();
+    
+    const updateRate = (id, val) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = formatINR(val);
+      const elDup = document.getElementById(id + '-dup');
+      if (elDup) elDup.textContent = formatINR(val);
+    };
+
+    updateRate('gold22', data.gold22 * 10);
+    updateRate('gold24', data.gold24 * 10);
+    updateRate('silver', data.silver * 1000);
+
+    if (data.tickerText) {
+      const el = document.getElementById('ticker-custom');
+      if (el) el.textContent = '✦ ' + data.tickerText + ' ✦';
+      const elDup = document.getElementById('ticker-custom-dup');
+      if (elDup) elDup.textContent = '✦ ' + data.tickerText + ' ✦';
+    }
+
+    window.liveGoldRates = { 22: data.gold22, 24: data.gold24, silver: data.silver };
+    
+    if (window.calcMiniGold) window.calcMiniGold();
+  } catch (error) {
+    console.error('Ticker update error:', error);
+  }
+}
+
+
+// Initial fetch
+fetchSettings();
+updateTicker();
+setInterval(updateTicker, 60000); // Every 1 minute
 
 // ────────────────────────────────────────
 // TOAST NOTIFICATION

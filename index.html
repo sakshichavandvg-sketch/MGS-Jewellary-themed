@@ -15,17 +15,15 @@
 <div id="gold-ticker">
   <span class="ticker-label">LIVE RATES ▸</span>
   <div class="ticker-track" id="ticker-track">
-    <div class="ticker-item"><span class="metal">22K GOLD / 10g</span><span class="price" id="gold22">₹6,842</span><span class="change up" id="gold22c">▲ 0.4%</span></div>
-    <div class="ticker-item"><span class="metal">24K GOLD / 10g</span><span class="price" id="gold24">₹7,490</span><span class="change up">▲ 0.3%</span></div>
-    <div class="ticker-item"><span class="metal">SILVER / kg</span><span class="price" id="silver">₹89,200</span><span class="change down">▼ 0.1%</span></div>
-    <div class="ticker-item"><span class="metal">MGS WASTAGE</span><span class="price" style="color:var(--gold-bright)">7.99%</span><span style="color:var(--gold-dim);font-size:0.6rem">LOWEST IN TOWN</span></div>
-    <div class="ticker-item"><span class="metal">MAKING CHARGES</span><span class="price" style="color:#25D366">100% OFF</span><span style="color:var(--gold-dim);font-size:0.6rem">ON FESTIVAL OFFERS</span></div>
+    <div class="ticker-item" id="t-gold22"><span class="metal">22K GOLD / 10g</span><span class="price" id="gold22">₹6,842</span><span class="change up" id="gold22c">▲ 0.4%</span></div>
+    <div class="ticker-item" id="t-gold24"><span class="metal">24K GOLD / 10g</span><span class="price" id="gold24">₹7,490</span><span class="change up" id="gold24c">▲ 0.3%</span></div>
+    <div class="ticker-item" id="t-silver"><span class="metal">SILVER / kg</span><span class="price" id="silver">₹89,200</span><span class="change down" id="silverc">▼ 0.1%</span></div>
+    <div class="ticker-item" id="t-custom"><span class="metal" id="ticker-custom" style="color:var(--gold-bright)">✦ LOWEST WASTAGE & LOWEST MAKING CHARGES IN MGS ✦</span></div>
     <!-- Duplicate for seamless scroll -->
-    <div class="ticker-item"><span class="metal">22K GOLD / 10g</span><span class="price">₹6,842</span><span class="change up">▲ 0.4%</span></div>
-    <div class="ticker-item"><span class="metal">24K GOLD / 10g</span><span class="price">₹7,490</span><span class="change up">▲ 0.3%</span></div>
-    <div class="ticker-item"><span class="metal">SILVER / kg</span><span class="price">₹89,200</span><span class="change down">▼ 0.1%</span></div>
-    <div class="ticker-item"><span class="metal">MGS WASTAGE</span><span class="price" style="color:var(--gold-bright)">7.99%</span><span style="color:var(--gold-dim);font-size:0.6rem">LOWEST IN TOWN</span></div>
-    <div class="ticker-item"><span class="metal">MAKING CHARGES</span><span class="price" style="color:#25D366">100% OFF</span><span style="color:var(--gold-dim);font-size:0.6rem">ON FESTIVAL OFFERS</span></div>
+    <div class="ticker-item" id="t-gold22-dup"><span class="metal">22K GOLD / 10g</span><span class="price" id="gold22-dup">₹6,842</span><span class="change up" id="gold22c-dup">▲ 0.4%</span></div>
+    <div class="ticker-item" id="t-gold24-dup"><span class="metal">24K GOLD / 10g</span><span class="price" id="gold24-dup">₹7,490</span><span class="change up" id="gold24c-dup">▲ 0.3%</span></div>
+    <div class="ticker-item" id="t-silver-dup"><span class="metal">SILVER / kg</span><span class="price" id="silver-dup">₹89,200</span><span class="change down" id="silverc-dup">▼ 0.1%</span></div>
+    <div class="ticker-item" id="t-custom-dup"><span class="metal" id="ticker-custom-dup" style="color:var(--gold-bright)">✦ LOWEST WASTAGE & LOWEST MAKING CHARGES IN MGS ✦</span></div>
   </div>
 </div>
 
@@ -41,10 +39,6 @@
       <li><a href="http://localhost:5000/admin/login">Admin Login</a></li>
   </ul>
   <div class="nav-actions">
-    <a href="#stores" class="nav-store-locator">
-      <span class="pin-dot">4</span>
-      <span>Stores</span>
-    </a>
     <a href="https://wa.me/919876543210?text=Hello%20MGS%20Jewellery!%20I%27d%20like%20to%20inquire%20about%20your%20collection." target="_blank" class="btn btn-whatsapp" style="padding:0.5rem 1.2rem;font-size:0.7rem">
       ✦ WhatsApp
     </a>
@@ -93,25 +87,25 @@
   </div>
   <div class="hero-product-showcase">
     <div class="hero-product-main image-frame animate-in">
-      <img src="assets/kasumalai.png" alt="Traditional Kasumalai Gold Necklace — HUID Hallmark" id="hero-product-img">
+      <img src="assets/images/hero_main.png" alt="Premium Gold Bridal Set — HUID Hallmark" id="hero-product-img">
       <div class="product-float-tag">
         <span class="tag-hallmark">HUID HALLMARK</span>
-        <span class="tag-name">Temple Kasumalai</span>
+        <span class="tag-name">Bridal Heritage Set</span>
         <span class="tag-purity">22k · BIS Certified</span>
       </div>
     </div>
     <div class="hero-thumbnails">
-      <div class="hero-thumb active" data-img="assets/kasumalai.png" data-name="Temple Kasumalai" data-purity="22k · HUID">
-        <img src="assets/kasumalai.png" alt="Kasumalai">
+      <div class="hero-thumb active" data-img="assets/images/hero_main.png" data-name="Bridal Heritage Set" data-purity="22k · HUID">
+        <img src="assets/images/hero_main.png" alt="Bridal Set">
       </div>
-      <div class="hero-thumb" data-img="assets/mangalsutra.png" data-name="Gold Mangalsutra" data-purity="22k · BIS 916">
-        <img src="assets/mangalsutra.png" alt="Mangalsutra">
+      <div class="hero-thumb" data-img="assets/images/hero_thumb_1.png" data-name="Antique Bangles" data-purity="22k · BIS 916">
+        <img src="assets/images/hero_thumb_1.png" alt="Antique Bangles">
       </div>
-      <div class="hero-thumb" data-img="assets/antique_bangles.png" data-name="Antique Bangles" data-purity="22k · HUID">
-        <img src="assets/antique_bangles.png" alt="Bangles">
+      <div class="hero-thumb" data-img="assets/images/2.jpeg" data-name="Gold Necklace" data-purity="22k · HUID">
+        <img src="assets/images/2.jpeg" alt="Gold Necklace">
       </div>
-      <div class="hero-thumb" data-img="assets/diamond_earrings.png" data-name="Diamond Earrings" data-purity="18k · BIS">
-        <img src="assets/diamond_earrings.png" alt="Diamond Earrings">
+      <div class="hero-thumb" data-img="assets/images/3.jpeg" data-name="Traditional Earrings" data-purity="22k · BIS">
+        <img src="assets/images/3.jpeg" alt="Traditional Earrings">
       </div>
     </div>
   </div>
@@ -164,8 +158,7 @@
   </div>
 
   <div class="collection-filter animate-in">
-    <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="bridal">Bridal</button>
+    <button class="filter-btn active" data-filter="bridal">Bridal</button>
     <button class="filter-btn" data-filter="bangles">Bangles</button>
     <button class="filter-btn" data-filter="necklaces">Necklaces</button>
     <button class="filter-btn" data-filter="earrings">Earrings</button>
@@ -181,47 +174,7 @@
   </div>
 </section>
 
-<!-- ===== FESTIVE OFFERS SECTION ===== -->
-<section id="festive-offers">
-  <div class="section-header animate-in">
-    <span class="label">Limited Period</span>
-    <h2>Festival Offers</h2>
-    <div class="section-underline"></div>
-  </div>
 
-  <div class="offers-layout animate-in">
-    <div class="offer-poster-main">
-      <img src="assets/diwali_poster.png" alt="Diwali Festive Offer — MGS Jewellery" id="active-poster">
-      <div class="offer-countdown">
-        <span class="countdown-label">Offer Ends In</span>
-        <div class="countdown-display" id="countdown-display">
-          <div class="cd-unit"><span id="cd-days">12</span><span>Days</span></div>
-          <div class="cd-sep">:</div>
-          <div class="cd-unit"><span id="cd-hours">08</span><span>Hrs</span></div>
-          <div class="cd-sep">:</div>
-          <div class="cd-unit"><span id="cd-mins">45</span><span>Min</span></div>
-          <div class="cd-sep">:</div>
-          <div class="cd-unit"><span id="cd-secs">00</span><span>Sec</span></div>
-        </div>
-      </div>
-    </div>
-    <div class="offer-details-panel">
-      <span class="label">SHUBH DIWALI SPECIAL</span>
-      <h3 id="offer-title">Diwali Golden Celebration</h3>
-      <p id="offer-desc">Celebrate this Diwali with unmatched value on pure gold. For a limited period, MGS Jewellery is offering our lowest-ever making charges and maximum value on old gold exchange.</p>
-      <div class="offer-pills">
-        <div class="offer-pill gold">7.99% WASTAGE — Lowest in Davanagere</div>
-        <div class="offer-pill green">100% OFF Making Charges</div>
-        <div class="offer-pill amber">Extra ₹200/g on Old Gold Exchange</div>
-        <div class="offer-pill amber">10% OFF on Diamond Jewelry</div>
-      </div>
-      <div class="offer-actions">
-        <a href="https://wa.me/919876543210?text=Hello!%20I%27d%20like%20to%20know%20more%20about%20the%20Diwali%20special%20offer." target="_blank" class="btn btn-whatsapp" id="offer-whatsapp-btn">✦ Claim on WhatsApp</a>
-        <a href="offers.html" class="btn btn-outline">All Offers ▸</a>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ===== TRUST & HERITAGE SECTION ===== -->
 <section id="heritage">
@@ -258,7 +211,7 @@
     </div>
     <div class="heritage-visual animate-in">
       <div class="heritage-img-frame">
-        <img src="assets/temple_bangles.png" alt="MGS Heritage Craftsmanship — Temple Bangles">
+        <img src="assets/heritage_jewelry_new.png" alt="MGS Heritage Craftsmanship — Premium Gold Bangles">
         <div class="heritage-img-overlay">
           <div class="overlay-stat">
             <span class="stat-num">24+</span>

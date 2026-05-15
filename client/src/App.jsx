@@ -8,6 +8,8 @@ import ProductForm from './pages/ProductForm'
 import Collections from './pages/Collections'
 import ContentManagement from './pages/ContentManagement'
 import Orders from './pages/Orders'
+import Offers from './pages/Offers'
+import LiveRates from './pages/LiveRates'
 
 export default function App(){
   return (
@@ -21,7 +23,10 @@ export default function App(){
         <Route path="collections" element={<Collections/>} />
         <Route path="content" element={<ContentManagement/>} />
         <Route path="orders" element={<Orders/>} />
+        <Route path="offers" element={<Offers/>} />
+        <Route path="rates" element={<LiveRates/>} />
       </Route>
+
       <Route path="/" element={<Navigate to="/admin" />} />
     </Routes>
   )

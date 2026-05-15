@@ -1,28 +1,28 @@
-const Product = require('../models/Product')
+const storage = require('../scripts/storage')
 
-exports.list = async (req,res)=>{
-  const items = await Product.find().populate('collection')
+exports.list = (req, res) => {
+  const items = storage.find('products')
   res.json(items)
 }
 
-exports.get = async (req,res)=>{
-  const p = await Product.findById(req.params.id).populate('collection')
-  if(!p) return res.status(404).json({message:'Not found'})
+exports.get = (req, res) => {
+  const p = storage.findById('products', req.params.id)
+  if (!p) return res.status(404).json({ message: 'Not found' })
   res.json(p)
 }
 
-exports.create = async (req,res)=>{
-  const p = new Product(req.body)
-  await p.save()
+exports.create = (req, res) => {
+  const p = storage.create('products', req.body)
   res.status(201).json(p)
 }
 
-exports.update = async (req,res)=>{
-  const p = await Product.findByIdAndUpdate(req.params.id, req.body, {new:true})
+exports.update = (req, res) => {
+  const p = storage.update('products', req.params.id, req.body)
+  if (!p) return res.status(404).json({ message: 'Not found' })
   res.json(p)
 }
 
-exports.remove = async (req,res)=>{
-  await Product.findByIdAndDelete(req.params.id)
-  res.json({ok:true})
+exports.remove = (req, res) => {
+  storage.remove('products', req.params.id)
+  res.json({ ok: true })
 }

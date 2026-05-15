@@ -23,3 +23,17 @@
   box-shadow: 0 8px 30px rgba(12,8,6,0.06);
   border-radius: 14px;
 }
+
+.input-lux {
+  @apply w-full p-3 border border-gray-100 rounded-lg focus:ring-1 focus:ring-gold focus:border-gold outline-none transition-all;
+  background: #fdfcfb;
+}
+
+.label-lux {
+  @apply block text-xs font-mono tracking-widest uppercase text-gray-400 mb-1;
+}
+
+.btn-lux {
+  @apply bg-gold text-white font-medium rounded-lg hover:shadow-lg hover:bg-gold/90 transition-all disabled:opacity-50;
+}
+

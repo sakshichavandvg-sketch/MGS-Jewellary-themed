@@ -178,14 +178,16 @@
 
 <div id="gold-ticker">
   <span class="ticker-label">LIVE RATES ▸</span>
-  <div class="ticker-track">
-    <div class="ticker-item"><span class="metal">22K GOLD / 10g</span><span class="price" id="gold22">₹6,842</span><span class="change up">▲ 0.4%</span></div>
-    <div class="ticker-item"><span class="metal">24K GOLD / 10g</span><span class="price" id="gold24">₹7,490</span><span class="change up">▲ 0.3%</span></div>
-    <div class="ticker-item"><span class="metal">SILVER / kg</span><span class="price" id="silver">₹89,200</span><span class="change down">▼ 0.1%</span></div>
-    <div class="ticker-item"><span class="metal">MGS WASTAGE</span><span class="price" style="color:var(--gold-bright)">7.99%</span></div>
-    <div class="ticker-item"><span class="metal">22K GOLD / 10g</span><span class="price">₹6,842</span><span class="change up">▲ 0.4%</span></div>
-    <div class="ticker-item"><span class="metal">24K GOLD / 10g</span><span class="price">₹7,490</span><span class="change up">▲ 0.3%</span></div>
-    <div class="ticker-item"><span class="metal">SILVER / kg</span><span class="price">₹89,200</span><span class="change down">▼ 0.1%</span></div>
+  <div class="ticker-track" id="ticker-track">
+    <div class="ticker-item" id="t-gold22"><span class="metal">22K GOLD / 10g</span><span class="price" id="gold22">₹6,842</span><span class="change up" id="gold22c">▲ 0.4%</span></div>
+    <div class="ticker-item" id="t-gold24"><span class="metal">24K GOLD / 10g</span><span class="price" id="gold24">₹7,490</span><span class="change up" id="gold24c">▲ 0.3%</span></div>
+    <div class="ticker-item" id="t-silver"><span class="metal">SILVER / kg</span><span class="price" id="silver">₹89,200</span><span class="change down" id="silverc">▼ 0.1%</span></div>
+    <div class="ticker-item" id="t-custom"><span class="metal" id="ticker-custom" style="color:var(--gold-bright)">✦ LOWEST WASTAGE & LOWEST MAKING CHARGES IN MGS ✦</span></div>
+    <!-- Duplicate for seamless scroll -->
+    <div class="ticker-item" id="t-gold22-dup"><span class="metal">22K GOLD / 10g</span><span class="price" id="gold22-dup">₹6,842</span><span class="change up" id="gold22c-dup">▲ 0.4%</span></div>
+    <div class="ticker-item" id="t-gold24-dup"><span class="metal">24K GOLD / 10g</span><span class="price" id="gold24-dup">₹7,490</span><span class="change up" id="gold24c-dup">▲ 0.3%</span></div>
+    <div class="ticker-item" id="t-silver-dup"><span class="metal">SILVER / kg</span><span class="price" id="silver-dup">₹89,200</span><span class="change down" id="silverc-dup">▼ 0.1%</span></div>
+    <div class="ticker-item" id="t-custom-dup"><span class="metal" id="ticker-custom-dup" style="color:var(--gold-bright)">✦ LOWEST WASTAGE & LOWEST MAKING CHARGES IN MGS ✦</span></div>
   </div>
 </div>
 
@@ -415,14 +417,12 @@
 <script src="global.js"></script>
 <script>
 // Gold Value Calculator
-const gvcRates = { 22: 684.2, 24: 749.0, 18: 562.0 }; // per gram
-
 function calcGVC() {
   const purity = parseInt(document.getElementById('gvc-purity').value);
   const weight = parseFloat(document.getElementById('gvc-weight').value) || 0;
-  const wastage = parseFloat(document.getElementById('gvc-wastage').value) / 100;
+  const wastage = (parseFloat(window.mgsSettings.wastageRate) / 100) || 0.0799;
   const making = parseFloat(document.getElementById('gvc-making').value) || 0;
-  const rate = gvcRates[purity] || gvcRates[22];
+  const rate = (window.liveGoldRates && window.liveGoldRates[purity]) || 6842;
 
   const baseVal = weight * rate;
   const wastageAmt = baseVal * wastage;
@@ -438,7 +438,20 @@ function calcGVC() {
   document.getElementById('gvc-making-val').textContent = making === 0 ? '₹0 (Festival Offer!)' : fmt(makingAmt);
   document.getElementById('gvc-gst-val').textContent = fmt(gst);
   document.getElementById('gvc-total-val').textContent = fmt(total);
+
+  // Update rates table as well
+  if (window.liveGoldRates) {
+    const r22 = document.getElementById('rate-g22');
+    const r24 = document.getElementById('rate-g24');
+    const rSil = document.getElementById('rate-sil');
+    if (r22) r22.textContent = fmt(window.liveGoldRates[22]);
+    if (r24) r24.textContent = fmt(window.liveGoldRates[24]);
+    if (rSil) rSil.textContent = fmt(window.liveGoldRates.silver * 1000);
+  }
 }
+
+// Expose to global for ticker updates
+window.calcMiniGold = calcGVC;
 
 ['gvc-purity','gvc-weight','gvc-wastage','gvc-making'].forEach(id => {
   document.getElementById(id)?.addEventListener('change', calcGVC);
@@ -446,12 +459,14 @@ function calcGVC() {
 });
 
 const gvcSlider = document.getElementById('gvc-slider');
-gvcSlider?.addEventListener('input', () => {
-  const v = gvcSlider.value;
-  document.getElementById('gvc-slider-val').textContent = v + ' g';
-  document.getElementById('gvc-weight').value = v;
-  calcGVC();
-});
+if (gvcSlider) {
+  gvcSlider.addEventListener('input', () => {
+    const v = gvcSlider.value;
+    document.getElementById('gvc-slider-val').textContent = v + ' g';
+    document.getElementById('gvc-weight').value = v;
+    calcGVC();
+  });
+}
 
 calcGVC();
 

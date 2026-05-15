@@ -1,4 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react'
+import { API_BASE } from '../services/api'
 
 export default function ImageUploader({onChange, initialImages=[]}){
   const [items, setItems] = useState([]) // items: {type:'url'|'file', src, file?}
@@ -6,7 +7,14 @@ export default function ImageUploader({onChange, initialImages=[]}){
 
   useEffect(()=>{
     if(initialImages && initialImages.length){
-      const init = initialImages.map(u=> ({type:'url', src:u}))
+      const init = initialImages.map(u=> {
+        let src = u
+        if (typeof u === 'string' && !u.startsWith('http') && !u.startsWith('blob:') && !u.startsWith('data:')) {
+          const cleanPath = u.startsWith('/') ? u.slice(1) : u;
+          src = `${API_BASE}/${cleanPath}`;
+        }
+        return {type:'url', src}
+      })
       setItems(init)
       if(onChange) onChange(initialImages.slice())
     }

@@ -88,16 +88,17 @@
     /* ===== FILTER + SEARCH BAR ===== */
     #filter-bar {
       position: sticky;
-      top: 4.2rem;
-      z-index: 100;
-      background: rgba(10, 10, 10, 0.95);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-      padding: 1.2rem 5%;
+      top: 5.2rem; /* Increased from 4.8rem to ensure clear visibility below the navbar */
+      z-index: 150;
+      background: rgba(10, 10, 10, 0.98);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(198,167,94,0.3);
+      padding: 1rem 5%;
       display: flex;
       align-items: center;
-      gap: 2rem;
+      gap: 1.5rem;
       flex-wrap: wrap;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.4);
     }
     .filter-scroll {
       display: flex;
@@ -106,13 +107,15 @@
       flex: 1;
     }
     .filter-btn {
-      padding: 0.45rem 1.2rem;
+      padding: 0.5rem 1.4rem;
       font-family: var(--font-mono);
-      font-size: 0.7rem;
+      font-size: 0.75rem;
+      font-weight: 600; /* Made bolder for better visibility */
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--white-dim);
-      border: 1px solid var(--border);
+      color: var(--gold-bright); /* Changed from white to gold as requested */
+      text-shadow: 0 0 10px rgba(198, 167, 94, 0.2);
+      border: 1px solid rgba(198, 167, 94, 0.35);
       background: transparent;
       transition: var(--transition);
       cursor: pointer;
@@ -149,7 +152,13 @@
       border-color: var(--gold-dim);
       box-shadow: 0 0 0 3px rgba(212,175,55,0.08);
     }
-    .search-box input::placeholder { color: var(--gray); }
+    .search-box input::placeholder {
+      color: rgba(198, 167, 94, 0.6); /* Gold-tinted placeholder */
+    }
+    .search-box:focus-within {
+      border-color: var(--gold);
+      box-shadow: 0 0 15px rgba(198, 167, 94, 0.15);
+    }
     .search-icon {
       position: absolute;
       left: 0.8rem;
@@ -352,7 +361,7 @@
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
-      #filter-bar { flex-direction: column; align-items: flex-start; gap: 1rem; top: 3.8rem; }
+      #filter-bar { flex-direction: column; align-items: flex-start; gap: 1rem; top: 5rem; }
       .search-box input { width: 100%; }
       .search-box { width: 100%; }
       #promo-banner { flex-direction: column; }
@@ -366,16 +375,15 @@
 <div id="gold-ticker">
   <span class="ticker-label">LIVE RATES ▸</span>
   <div class="ticker-track" id="ticker-track">
-    <div class="ticker-item"><span class="metal">22K GOLD / 10g</span><span class="price" id="gold22">₹6,842</span><span class="change up" id="gold22c">▲ 0.4%</span></div>
-    <div class="ticker-item"><span class="metal">24K GOLD / 10g</span><span class="price" id="gold24">₹7,490</span><span class="change up">▲ 0.3%</span></div>
-    <div class="ticker-item"><span class="metal">SILVER / kg</span><span class="price" id="silver">₹89,200</span><span class="change down">▼ 0.1%</span></div>
-    <div class="ticker-item"><span class="metal">MGS WASTAGE</span><span class="price" style="color:var(--gold-bright)">7.99%</span><span style="color:var(--gold-dim);font-size:0.6rem">LOWEST IN TOWN</span></div>
-    <div class="ticker-item"><span class="metal">MAKING CHARGES</span><span class="price" style="color:#25D366">100% OFF</span><span style="color:var(--gold-dim);font-size:0.6rem">ON FESTIVAL OFFERS</span></div>
-    <div class="ticker-item"><span class="metal">22K GOLD / 10g</span><span class="price">₹6,842</span><span class="change up">▲ 0.4%</span></div>
-    <div class="ticker-item"><span class="metal">24K GOLD / 10g</span><span class="price">₹7,490</span><span class="change up">▲ 0.3%</span></div>
-    <div class="ticker-item"><span class="metal">SILVER / kg</span><span class="price">₹89,200</span><span class="change down">▼ 0.1%</span></div>
-    <div class="ticker-item"><span class="metal">MGS WASTAGE</span><span class="price" style="color:var(--gold-bright)">7.99%</span><span style="color:var(--gold-dim);font-size:0.6rem">LOWEST IN TOWN</span></div>
-    <div class="ticker-item"><span class="metal">MAKING CHARGES</span><span class="price" style="color:#25D366">100% OFF</span><span style="color:var(--gold-dim);font-size:0.6rem">ON FESTIVAL OFFERS</span></div>
+    <div class="ticker-item" id="t-gold22"><span class="metal">22K GOLD / 10g</span><span class="price" id="gold22">₹6,842</span><span class="change up" id="gold22c">▲ 0.4%</span></div>
+    <div class="ticker-item" id="t-gold24"><span class="metal">24K GOLD / 10g</span><span class="price" id="gold24">₹7,490</span><span class="change up" id="gold24c">▲ 0.3%</span></div>
+    <div class="ticker-item" id="t-silver"><span class="metal">SILVER / kg</span><span class="price" id="silver">₹89,200</span><span class="change down" id="silverc">▼ 0.1%</span></div>
+    <div class="ticker-item" id="t-custom"><span class="metal" id="ticker-custom" style="color:var(--gold-bright)">✦ LOWEST WASTAGE & LOWEST MAKING CHARGES IN MGS ✦</span></div>
+    <!-- Duplicate for seamless scroll -->
+    <div class="ticker-item" id="t-gold22-dup"><span class="metal">22K GOLD / 10g</span><span class="price" id="gold22-dup">₹6,842</span><span class="change up" id="gold22c-dup">▲ 0.4%</span></div>
+    <div class="ticker-item" id="t-gold24-dup"><span class="metal">24K GOLD / 10g</span><span class="price" id="gold24-dup">₹7,490</span><span class="change up" id="gold24c-dup">▲ 0.3%</span></div>
+    <div class="ticker-item" id="t-silver-dup"><span class="metal">SILVER / kg</span><span class="price" id="silver-dup">₹89,200</span><span class="change down" id="silverc-dup">▼ 0.1%</span></div>
+    <div class="ticker-item" id="t-custom-dup"><span class="metal" id="ticker-custom-dup" style="color:var(--gold-bright)">✦ LOWEST WASTAGE & LOWEST MAKING CHARGES IN MGS ✦</span></div>
   </div>
 </div>
 
@@ -390,10 +398,6 @@
     <li><a href="heritage.html">Heritage</a></li>
   </ul>
   <div class="nav-actions">
-    <a href="index.html#stores" class="nav-store-locator">
-      <span class="pin-dot">4</span>
-      <span>Stores</span>
-    </a>
     <a href="https://wa.me/919876543210?text=Hello%20MGS%20Jewellery!%20I%27d%20like%20to%20inquire%20about%20your%20collection." target="_blank" class="btn btn-whatsapp" style="padding:0.5rem 1.2rem;font-size:0.7rem">
       ✦ WhatsApp
     </a>
@@ -433,8 +437,7 @@
 <!-- ===== FILTER BAR ===== -->
 <div id="filter-bar">
   <div class="filter-scroll">
-    <button class="filter-btn active" data-filter="all">All Pieces</button>
-    <button class="filter-btn" data-filter="bridal">Bridal Sets</button>
+    <button class="filter-btn active" data-filter="bridal">Bridal Sets</button>
     <button class="filter-btn" data-filter="necklaces">Necklaces</button>
     <button class="filter-btn" data-filter="bangles">Bangles</button>
     <button class="filter-btn" data-filter="earrings">Earrings</button>
@@ -451,18 +454,6 @@
   <span class="results-count" id="results-count"><span id="count-num">30</span> pieces</span>
 </div>
 
-<!-- ===== PROMO BANNER ===== -->
-<div id="promo-banner">
-  <div class="promo-text">
-    <span class="promo-pill">🎉 FESTIVAL SPECIAL</span>
-    <h3>100% OFF Making Charges — Limited Period</h3>
-    <p>Shop any piece and enjoy zero making charges + lowest 7.99% wastage in Davanagere.</p>
-  </div>
-  <div style="display:flex;gap:1rem;flex-wrap:wrap">
-    <a href="offers.html" class="btn btn-gold" id="promo-offers-btn">View Offers ▸</a>
-    <a href="https://wa.me/919876543210?text=Hello%20MGS!%20I%27d%20like%20to%20claim%20the%20festival%20making%20charges%20offer." target="_blank" class="btn btn-whatsapp" id="promo-wa-btn">✦ Claim on WhatsApp</a>
-  </div>
-</div>
 
 <!-- ===== MAIN COLLECTIONS GRID ===== -->
 <section id="collections-main">
@@ -538,463 +529,49 @@
 
 <script src="global.js"></script>
 <script>
-/* ===== FULL COLLECTIONS PRODUCT DATABASE ===== */
-const allProducts = [
+/* ===== DYNAMIC PRODUCT LOADER FROM API ===== */
 
-  // ── BRIDAL SETS ──────────────────────────────
-  {
-    id: 'col-b1',
-    name: 'Grand Bridal Necklace Set',
-    category: 'bridal',
-    tags: ['bridal', 'necklaces'],
-    badge: 'bridal',
-    badgeLabel: 'Bridal',
-    image: 'assets/kasumalai.png',
-    hallmark: 'HUID',
-    purity: '22K Gold',
-    weight: '86.5 gm',
-    desc: 'Complete bridal set — long necklace, choker & jhumka earrings with temple motifs. Perfect for South Indian weddings.'
-  },
-  {
-    id: 'col-b2',
-    name: 'Temple Kasumalai Set',
-    category: 'bridal',
-    tags: ['bridal', 'necklaces'],
-    badge: 'bridal',
-    badgeLabel: 'Bridal',
-    image: 'assets/kasumalai.png',
-    hallmark: 'HUID',
-    purity: '22K Gold',
-    weight: '48.5 gm',
-    desc: 'Traditional Lakshmi coin necklace — bridal heirloom craftsmanship with 24 antique Lakshmi coins.'
-  },
-  {
-    id: 'col-b3',
-    name: 'Antique Bridal Choker',
-    category: 'bridal',
-    tags: ['bridal', 'necklaces'],
-    badge: 'new',
-    badgeLabel: 'New',
-    image: 'assets/kasumalai.png',
-    hallmark: 'HUID',
-    purity: '22K Gold',
-    weight: '62.3 gm',
-    desc: 'Broad antique-finish choker with ruby & emerald accent stones. Statement bridal piece.'
-  },
-
-  // ── NECKLACES ────────────────────────────────
-  {
-    id: 'col-n1',
-    name: 'Bridal Mangalsutra Long Set',
-    category: 'necklaces',
-    tags: ['necklaces'],
-    badge: null,
-    image: 'assets/mangalsutra.png',
-    hallmark: 'BIS',
-    purity: '22K Gold',
-    weight: '22.8 gm',
-    desc: 'Traditional black bead & gold Mangalsutra with pendant — South Indian classic style.'
-  },
-  {
-    id: 'col-n2',
-    name: 'Lakshmi Pendant Necklace',
-    category: 'necklaces',
-    tags: ['necklaces'],
-    badge: 'featured',
-    badgeLabel: 'Popular',
-    image: 'assets/kasumalai.png',
-    hallmark: 'HUID',
-    purity: '22K Gold',
-    weight: '18.5 gm',
-    desc: 'Intricate Lakshmi pendant with gold beaded necklace — ideal for festivals and pujas.'
-  },
-  {
-    id: 'col-n3',
-    name: 'Antique Ruby Necklace',
-    category: 'necklaces',
-    tags: ['necklaces'],
-    badge: null,
-    image: 'assets/kasumalai.png',
-    hallmark: 'HUID',
-    purity: '22K Gold',
-    weight: '34.2 gm',
-    desc: 'Handcrafted antique gold necklace with genuine ruby stone setting and temple design.'
-  },
-  {
-    id: 'col-n4',
-    name: 'Modern Leaf Gold Necklace',
-    category: 'necklaces',
-    tags: ['necklaces'],
-    badge: 'new',
-    badgeLabel: 'New',
-    image: 'assets/mangalsutra.png',
-    hallmark: 'BIS',
-    purity: '22K Gold',
-    weight: '14.8 gm',
-    desc: 'Contemporary leaf-motif necklace — elegant everyday wear with a modern goldsmith touch.'
-  },
-
-  // ── BANGLES ──────────────────────────────────
-  {
-    id: 'col-bg1',
-    name: 'Heritage Antique Bangles (Set of 4)',
-    category: 'bangles',
-    tags: ['bangles'],
-    badge: 'featured',
-    badgeLabel: 'Popular',
-    image: 'assets/antique_bangles.png',
-    hallmark: 'HUID',
-    purity: '22K Gold',
-    weight: '38.2 gm',
-    desc: 'Set of 4 antique-finish temple motif bangles — unique wax-mold casting technique.'
-  },
-  {
-    id: 'col-bg2',
-    name: 'Temple Design Bangles (Pair)',
-    category: 'bangles',
-    tags: ['bangles'],
-    badge: null,
-    image: 'assets/temple_bangles.png',
-    hallmark: 'HUID',
-    purity: '22K Gold',
-    weight: '28.5 gm',
-    desc: 'Wide Lakshmi embossed bangles — ruby accent, temple design. Traditional bridal favourite.'
-  },
-  {
-    id: 'col-bg3',
-    name: 'Plain Kadas (Set of 2)',
-    category: 'bangles',
-    tags: ['bangles'],
-    badge: null,
-    image: 'assets/antique_bangles.png',
-    hallmark: 'BIS',
-    purity: '22K Gold',
-    weight: '42.0 gm',
-    desc: 'Solid plain gold Kadas — modern weight-conscious design with smooth polished finish.'
-  },
-  {
-    id: 'col-bg4',
-    name: 'Peacock Enamel Bangles',
-    category: 'bangles',
-    tags: ['bangles', 'bridal'],
-    badge: 'new',
-    badgeLabel: 'New',
-    image: 'assets/temple_bangles.png',
-    hallmark: 'HUID',
-    purity: '22K Gold',
-    weight: '32.8 gm',
-    desc: 'Vibrant enamel-filled peacock motif bangles — meenakari craftsmanship.'
-  },
-  {
-    id: 'col-bg5',
-    name: 'Twisted Rope Bangle',
-    category: 'bangles',
-    tags: ['bangles'],
-    badge: null,
-    image: 'assets/antique_bangles.png',
-    hallmark: 'BIS',
-    purity: '22K Gold',
-    weight: '16.4 gm',
-    desc: 'Elegant twisted rope gold bangle — lightweight daily wear with classic charm.'
-  },
-
-  // ── EARRINGS ─────────────────────────────────
-  {
-    id: 'col-e1',
-    name: 'Diamond Drop Earrings',
-    category: 'earrings',
-    tags: ['earrings'],
-    badge: 'featured',
-    badgeLabel: 'Popular',
-    image: 'assets/diamond_earrings.png',
-    hallmark: 'BIS',
-    purity: '18K Gold + Diamond',
-    weight: '6.4 gm',
-    desc: 'South Indian floral diamond drop — intricate goldsmith work with VS clarity diamonds.'
-  },
-  {
-    id: 'col-e2',
-    name: 'Gold Stud Earrings',
-    category: 'earrings',
-    tags: ['earrings'],
-    badge: null,
-    image: 'assets/studs.png',
-    hallmark: 'BIS',
-    purity: '22K Gold',
-    weight: '3.2 gm',
-    desc: 'Classic South Indian gold stud earrings — BIS certified. Everyday essentials.'
-  },
-  {
-    id: 'col-e3',
-    name: 'Antique Jhumka Earrings',
-    category: 'earrings',
-    tags: ['earrings', 'bridal'],
-    badge: 'bridal',
-    badgeLabel: 'Bridal',
-    image: 'assets/diamond_earrings.png',
-    hallmark: 'HUID',
-    purity: '22K Gold',
-    weight: '12.4 gm',
-    desc: 'Traditional bell Jhumka with ruby drops and filigree work — classic bridal earrings.'
-  },
-  {
-    id: 'col-e4',
-    name: 'Temple Chandbali Earrings',
-    category: 'earrings',
-    tags: ['earrings'],
-    badge: null,
-    image: 'assets/studs.png',
-    hallmark: 'HUID',
-    purity: '22K Gold',
-    weight: '9.8 gm',
-    desc: 'Half-moon Chandbali with temple motifs and stone work — festive statement earrings.'
-  },
-  {
-    id: 'col-e5',
-    name: 'Pearl Drop Earrings',
-    category: 'earrings',
-    tags: ['earrings'],
-    badge: 'new',
-    badgeLabel: 'New',
-    image: 'assets/diamond_earrings.png',
-    hallmark: 'BIS',
-    purity: '22K Gold + Pearl',
-    weight: '5.6 gm',
-    desc: 'Elegant freshwater pearl drop earrings set in 22K gold — refined everyday luxury.'
-  },
-  {
-    id: 'col-e6',
-    name: 'Gold Hoop Earrings',
-    category: 'earrings',
-    tags: ['earrings'],
-    badge: null,
-    image: 'assets/studs.png',
-    hallmark: 'BIS',
-    purity: '22K Gold',
-    weight: '4.2 gm',
-    desc: 'Lightweight textured gold hoop earrings — modern silhouette, timeless gold.'
-  },
-
-  // ── RINGS ────────────────────────────────────
-  {
-    id: 'col-r1',
-    name: 'Floral Emerald Ring',
-    category: 'rings',
-    tags: ['rings'],
-    badge: 'featured',
-    badgeLabel: 'Popular',
-    image: 'assets/ring.png',
-    hallmark: 'HUID',
-    purity: '22K Gold',
-    weight: '4.8 gm',
-    desc: 'Intricate floral setting with natural emerald centerpiece — unique statement ring.'
-  },
-  {
-    id: 'col-r2',
-    name: 'Diamond Solitaire Ring',
-    category: 'rings',
-    tags: ['rings'],
-    badge: 'new',
-    badgeLabel: 'New',
-    image: 'assets/ring.png',
-    hallmark: 'BIS',
-    purity: '18K Gold + Diamond',
-    weight: '3.4 gm',
-    desc: 'Classic solitaire diamond engagement ring — certified diamond, 18K white gold setting.'
-  },
-  {
-    id: 'col-r3',
-    name: 'Temple Toe Rings (Pair)',
-    category: 'rings',
-    tags: ['rings'],
-    badge: null,
-    image: 'assets/ring.png',
-    hallmark: 'HUID',
-    purity: '22K Gold',
-    weight: '2.8 gm',
-    desc: 'Traditional South Indian toe rings with Om and temple motifs. Bridal essential.'
-  },
-  {
-    id: 'col-r4',
-    name: 'Ruby Cocktail Ring',
-    category: 'rings',
-    tags: ['rings'],
-    badge: null,
-    image: 'assets/ring.png',
-    hallmark: 'HUID',
-    purity: '22K Gold + Ruby',
-    weight: '5.2 gm',
-    desc: 'Bold cocktail ring with natural ruby and gold filigree work — for the bold wearer.'
-  },
-
-  // ── CHAINS ───────────────────────────────────
-  {
-    id: 'col-c1',
-    name: 'Solid Gold Rope Chain',
-    category: 'chains',
-    tags: ['chains'],
-    badge: 'featured',
-    badgeLabel: 'Popular',
-    image: 'assets/gold_chain.png',
-    hallmark: 'BIS',
-    purity: '22K Gold',
-    weight: '15.2 gm',
-    desc: 'Classic solid gold rope chain — timeless 22K craftsmanship for men and women.'
-  },
-  {
-    id: 'col-c2',
-    name: 'Franco Box Chain (Men\'s)',
-    category: 'chains',
-    tags: ['chains'],
-    badge: null,
-    image: 'assets/gold_chain.png',
-    hallmark: 'BIS',
-    purity: '22K Gold',
-    weight: '24.8 gm',
-    desc: 'Heavy Franco box chain for men — 22 inches, substantial weight, bold statement.'
-  },
-  {
-    id: 'col-c3',
-    name: 'Herringbone Flat Chain',
-    category: 'chains',
-    tags: ['chains'],
-    badge: 'new',
-    badgeLabel: 'New',
-    image: 'assets/gold_chain.png',
-    hallmark: 'BIS',
-    purity: '22K Gold',
-    weight: '11.6 gm',
-    desc: 'Ultra-flat herringbone chain — modern and minimal. Elegant for layering.'
-  },
-  {
-    id: 'col-c4',
-    name: 'Singapore Twist Chain',
-    category: 'chains',
-    tags: ['chains'],
-    badge: null,
-    image: 'assets/gold_chain.png',
-    hallmark: 'BIS',
-    purity: '22K Gold',
-    weight: '8.2 gm',
-    desc: 'Classic Singapore twisted gold chain — lightweight everyday wear piece.'
-  },
-
-  // ── MANGALSUTRA ──────────────────────────────
-  {
-    id: 'col-ms1',
-    name: 'Traditional Mangalsutra',
-    category: 'mangalsutra',
-    tags: ['mangalsutra'],
-    badge: 'featured',
-    badgeLabel: 'Bestseller',
-    image: 'assets/mangalsutra.png',
-    hallmark: 'BIS',
-    purity: '22K Gold',
-    weight: '22.8 gm',
-    desc: 'Classic double-strand black bead mangalsutra with Lakshmi pendant — 22K certified.'
-  },
-  {
-    id: 'col-ms2',
-    name: 'Diamond Mangalsutra',
-    category: 'mangalsutra',
-    tags: ['mangalsutra'],
-    badge: 'new',
-    badgeLabel: 'New',
-    image: 'assets/mangalsutra.png',
-    hallmark: 'BIS',
-    purity: '18K Gold + Diamond',
-    weight: '8.5 gm',
-    desc: 'Modern minimal diamond mangalsutra — contemporary design for the modern bride.'
-  },
-  {
-    id: 'col-ms3',
-    name: 'Antique Gold Mangalsutra',
-    category: 'mangalsutra',
-    tags: ['mangalsutra', 'bridal'],
-    badge: 'bridal',
-    badgeLabel: 'Bridal',
-    image: 'assets/mangalsutra.png',
-    hallmark: 'HUID',
-    purity: '22K Gold',
-    weight: '35.0 gm',
-    desc: 'Heavy antique-finish long mangalsutra with temple pendant and black bead chain.'
-  },
-
-  // ── ANKLETS ──────────────────────────────────
-  {
-    id: 'col-ak1',
-    name: 'Ghungroo Anklet (Pair)',
-    category: 'anklets',
-    tags: ['anklets'],
-    badge: 'featured',
-    badgeLabel: 'Popular',
-    image: 'assets/antique_bangles.png',
-    hallmark: 'BIS',
-    purity: '22K Gold',
-    weight: '19.6 gm',
-    desc: 'Traditional bell anklets (Ghungroo) — pair with gold beads and tiny gold bells.'
-  },
-  {
-    id: 'col-ak2',
-    name: 'Flat Link Anklet (Pair)',
-    category: 'anklets',
-    tags: ['anklets'],
-    badge: 'new',
-    badgeLabel: 'New',
-    image: 'assets/temple_bangles.png',
-    hallmark: 'BIS',
-    purity: '22K Gold',
-    weight: '14.2 gm',
-    desc: 'Modern flat-link gold anklets — minimalist design for everyday elegance.'
-  },
-
-  // ── PENDANTS ─────────────────────────────────
-  {
-    id: 'col-p1',
-    name: 'Ganesh Gold Pendant',
-    category: 'pendants',
-    tags: ['pendants'],
-    badge: 'featured',
-    badgeLabel: 'Popular',
-    image: 'assets/kasumalai.png',
-    hallmark: 'HUID',
-    purity: '22K Gold',
-    weight: '4.5 gm',
-    desc: 'Handcrafted Lord Ganesha pendant — auspicious gift for all occasions. Intricate detail.'
-  },
-  {
-    id: 'col-p2',
-    name: 'Om Diamond Pendant',
-    category: 'pendants',
-    tags: ['pendants'],
-    badge: 'new',
-    badgeLabel: 'New',
-    image: 'assets/diamond_earrings.png',
-    hallmark: 'BIS',
-    purity: '18K Gold + Diamond',
-    weight: '2.8 gm',
-    desc: 'Sacred Om symbol pendant set with pavé diamonds — spiritual and modern.'
-  },
-  {
-    id: 'col-p3',
-    name: 'Lakshmi Coin Pendant',
-    category: 'pendants',
-    tags: ['pendants', 'bridal'],
-    badge: null,
-    image: 'assets/kasumalai.png',
-    hallmark: 'HUID',
-    purity: '22K Gold',
-    weight: '8.2 gm',
-    desc: 'Traditional Lakshmi coin pendant with ornate gold border — heirloom-quality piece.'
-  }
-];
-
-// ──────────────────────────────────
-// STATE
-// ──────────────────────────────────
-let activeFilter = 'all';
+let allProducts = [];
+let activeFilter = 'bridal';
 let searchQuery = '';
-let visibleCount = 30; // Show all by default
+
+async function loadProducts() {
+  try {
+    const res = await fetch('/api/products');
+    const data = await res.json();
+
+    // Transform API data to match our format
+    allProducts = data.map(p => ({
+      id: p._id || p.id,
+      name: p.name,
+      category: p.category || 'necklaces',
+      tags: p.tag ? [p.tag] : [],
+      badge: p.tag || null,
+      badgeLabel: p.tag ? p.tag.charAt(0).toUpperCase() + p.tag.slice(1) : '',
+      image: (p.images && p.images[0]) || p.image || 'assets/images/1.jpeg',
+      hallmark: p.hallmark || 'HUID',
+      purity: p.purity || '22K Gold',
+      weight: p.weight || '10g',
+      price: p.price,
+      desc: p.description || ''
+    }));
+
+    renderProducts();
+
+    // Update count
+    const countEl = document.getElementById('count-num');
+    if (countEl) countEl.textContent = allProducts.length;
+  } catch (e) {
+    console.error('Error loading products', e);
+    // Fallback to empty state
+    document.getElementById('product-grid').innerHTML = `
+      <div id="empty-state" style="display:block;grid-column:1/-1;text-align:center;padding:6rem 2rem">
+        <div style="font-size:3rem;color:var(--gold-dim);margin-bottom:1rem">◈</div>
+        <h3 style="color:var(--white-dim);font-size:1.4rem;font-family:var(--font-serif);margin-bottom:0.5rem">Unable to load products</h3>
+        <p style="color:var(--gray);font-size:0.9rem">Please try again later</p>
+      </div>`;
+  }
+}
 
 function getWhatsAppMsg(name) {
   return `https://wa.me/919876543210?text=Hello%20MGS%20Jewellery!%20I%27m%20interested%20in%20the%20*${encodeURIComponent(name)}*.%20Please%20share%20the%20current%20price%20and%20availability.`;
@@ -1005,19 +582,22 @@ function getBadgeHTML(product) {
   return `<span class="product-tag-badge ${product.badge}">${product.badgeLabel}</span>`;
 }
 
+function formatPrice(price) {
+  if (!price) return 'Inquire for Price';
+  return '₹' + Math.round(price).toLocaleString('en-IN');
+}
+
 function renderProducts() {
   const grid = document.getElementById('product-grid');
-  if (!grid) return;
+  if (!grid || allProducts.length === 0) return;
 
   let filtered = allProducts;
 
   // Apply category filter
-  if (activeFilter !== 'all') {
-    filtered = filtered.filter(p =>
-      p.category === activeFilter ||
-      (p.tags && p.tags.includes(activeFilter))
-    );
-  }
+  filtered = filtered.filter(p =>
+    p.category === activeFilter ||
+    (p.tags && p.tags.includes(activeFilter))
+  );
 
   // Apply search
   if (searchQuery.trim()) {
@@ -1048,11 +628,6 @@ function renderProducts() {
     <div class="product-card animate-in" data-id="${p.id}" data-cat="${p.category}">
       <div class="product-card-img image-frame">
         <img src="${p.image}" alt="${p.name} — ${p.hallmark} Hallmark, MGS Jewellery Davanagere" loading="lazy">
-        <div class="product-card-overlay">
-          <a href="${getWhatsAppMsg(p.name)}" target="_blank" class="btn btn-whatsapp" style="font-size:0.65rem;padding:0.5rem 0.9rem">
-            ✦ Inquire on WhatsApp
-          </a>
-        </div>
         ${getBadgeHTML(p)}
       </div>
       <div class="product-card-info">
@@ -1064,8 +639,7 @@ function renderProducts() {
         <p class="pc-meta">${p.desc}</p>
         <div class="pc-weight">⚖ ${p.weight}</div>
         <div class="product-card-actions">
-          <span class="pc-price">Inquire for Price</span>
-          <a href="${getWhatsAppMsg(p.name)}" target="_blank" class="btn btn-whatsapp" id="wa-${p.id}" style="font-size:0.65rem;padding:0.45rem 0.9rem">✦ WhatsApp</a>
+          <a href="${getWhatsAppMsg(p.name)}" target="_blank" class="btn btn-whatsapp" id="wa-${p.id}" style="width:100%;font-size:0.75rem;padding:0.6rem 0.9rem">✦ WhatsApp Inquiry</a>
         </div>
       </div>
     </div>
@@ -1080,23 +654,18 @@ function renderProducts() {
   });
 }
 
-// ──────────────────────────────────
 // FILTER BUTTONS
-// ──────────────────────────────────
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     activeFilter = btn.dataset.filter;
     renderProducts();
-    // Smooth scroll to grid
     document.getElementById('collections-main').scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
 
-// ──────────────────────────────────
 // SEARCH
-// ──────────────────────────────────
 const searchInput = document.getElementById('search-input');
 let searchDebounce;
 if (searchInput) {
@@ -1109,9 +678,7 @@ if (searchInput) {
   });
 }
 
-// ──────────────────────────────────
-// HASH-BASED FILTER (from footer links like collections.html#bangles)
-// ──────────────────────────────────
+// HASH-BASED FILTER
 function applyHashFilter() {
   const hash = window.location.hash.replace('#', '');
   const validFilters = ['bridal','necklaces','bangles','earrings','rings','chains','mangalsutra','anklets','pendants'];
@@ -1127,10 +694,8 @@ function applyHashFilter() {
 window.addEventListener('hashchange', applyHashFilter);
 applyHashFilter();
 
-// ──────────────────────────────────
-// INITIAL RENDER
-// ──────────────────────────────────
-renderProducts();
+// INITIAL LOAD
+loadProducts();
 </script>
 </body>
 </html>

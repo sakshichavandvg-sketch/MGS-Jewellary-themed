@@ -21,6 +21,8 @@ export default function Sidebar(){
         <NavItem to="/admin/products">Products</NavItem>
         <NavItem to="/admin/collections">Collections</NavItem>
         <NavItem to="/admin/content">Content</NavItem>
+        <NavItem to="/admin/offers">Offers</NavItem>
+        <NavItem to="/admin/rates">Live Rates</NavItem>
         <NavItem to="/admin/orders">Orders</NavItem>
       </nav>
     </aside>

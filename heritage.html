@@ -662,21 +662,18 @@
 </head>
 <body>
 
-<!-- ===== GOLD TICKER ===== -->
-<div id="gold-ticker">
+<!-- ===== GOLD TICKER ===== --><div id="gold-ticker">
   <span class="ticker-label">LIVE RATES ▸</span>
   <div class="ticker-track" id="ticker-track">
-    <div class="ticker-item"><span class="metal">22K GOLD / 10g</span><span class="price" id="gold22">₹6,842</span><span class="change up" id="gold22c">▲ 0.4%</span></div>
-    <div class="ticker-item"><span class="metal">24K GOLD / 10g</span><span class="price" id="gold24">₹7,490</span><span class="change up">▲ 0.3%</span></div>
-    <div class="ticker-item"><span class="metal">SILVER / kg</span><span class="price" id="silver">₹89,200</span><span class="change down">▼ 0.1%</span></div>
-    <div class="ticker-item"><span class="metal">MGS WASTAGE</span><span class="price" style="color:var(--gold-bright)">7.99%</span><span style="color:var(--gold-dim);font-size:0.6rem">LOWEST IN TOWN</span></div>
-    <div class="ticker-item"><span class="metal">MAKING CHARGES</span><span class="price" style="color:#25D366">100% OFF</span><span style="color:var(--gold-dim);font-size:0.6rem">ON FESTIVAL OFFERS</span></div>
+    <div class="ticker-item" id="t-gold22"><span class="metal">22K GOLD / 10g</span><span class="price" id="gold22">₹6,842</span><span class="change up" id="gold22c">▲ 0.4%</span></div>
+    <div class="ticker-item" id="t-gold24"><span class="metal">24K GOLD / 10g</span><span class="price" id="gold24">₹7,490</span><span class="change up" id="gold24c">▲ 0.3%</span></div>
+    <div class="ticker-item" id="t-silver"><span class="metal">SILVER / kg</span><span class="price" id="silver">₹89,200</span><span class="change down" id="silverc">▼ 0.1%</span></div>
+    <div class="ticker-item" id="t-custom"><span class="metal" id="ticker-custom" style="color:var(--gold-bright)">✦ LOWEST WASTAGE & LOWEST MAKING CHARGES IN MGS ✦</span></div>
     <!-- Duplicate for seamless scroll -->
-    <div class="ticker-item"><span class="metal">22K GOLD / 10g</span><span class="price">₹6,842</span><span class="change up">▲ 0.4%</span></div>
-    <div class="ticker-item"><span class="metal">24K GOLD / 10g</span><span class="price">₹7,490</span><span class="change up">▲ 0.3%</span></div>
-    <div class="ticker-item"><span class="metal">SILVER / kg</span><span class="price">₹89,200</span><span class="change down">▼ 0.1%</span></div>
-    <div class="ticker-item"><span class="metal">MGS WASTAGE</span><span class="price" style="color:var(--gold-bright)">7.99%</span><span style="color:var(--gold-dim);font-size:0.6rem">LOWEST IN TOWN</span></div>
-    <div class="ticker-item"><span class="metal">MAKING CHARGES</span><span class="price" style="color:#25D366">100% OFF</span><span style="color:var(--gold-dim);font-size:0.6rem">ON FESTIVAL OFFERS</span></div>
+    <div class="ticker-item" id="t-gold22-dup"><span class="metal">22K GOLD / 10g</span><span class="price" id="gold22-dup">₹6,842</span><span class="change up" id="gold22c-dup">▲ 0.4%</span></div>
+    <div class="ticker-item" id="t-gold24-dup"><span class="metal">24K GOLD / 10g</span><span class="price" id="gold24-dup">₹7,490</span><span class="change up" id="gold24c-dup">▲ 0.3%</span></div>
+    <div class="ticker-item" id="t-silver-dup"><span class="metal">SILVER / kg</span><span class="price" id="silver-dup">₹89,200</span><span class="change down" id="silverc-dup">▼ 0.1%</span></div>
+    <div class="ticker-item" id="t-custom-dup"><span class="metal" id="ticker-custom-dup" style="color:var(--gold-bright)">✦ LOWEST WASTAGE & LOWEST MAKING CHARGES IN MGS ✦</span></div>
   </div>
 </div>
 
@@ -691,10 +688,6 @@
     <li><a href="heritage.html" class="active">Heritage</a></li>
   </ul>
   <div class="nav-actions">
-    <a href="index.html#stores" class="nav-store-locator">
-      <span class="pin-dot">4</span>
-      <span>Stores</span>
-    </a>
     <a href="https://wa.me/919876543210?text=Hello%20MGS%20Jewellery!%20I%27d%20like%20to%20know%20more%20about%20your%20heritage%20and%20collection." target="_blank" class="btn btn-whatsapp" style="padding:0.5rem 1.2rem;font-size:0.7rem">
       ✦ WhatsApp
     </a>
@@ -749,8 +742,8 @@
     </div>
 
     <div class="heritage-hero-visual animate-in">
-      <img src="assets/kasumalai.png" alt="MGS Jewellery Heritage Craftsmanship" class="hero-img-main">
-      <img src="assets/temple_bangles.png" alt="MGS Jewellery Temple Bangles" class="hero-img-accent">
+      <img src="assets/heritage_necklace.png" alt="MGS Jewellery Heritage Craftsmanship" class="hero-img-main">
+      <img src="assets/heritage_bangles.png" alt="MGS Jewellery Heritage Bangles" class="hero-img-accent">
       <div class="hero-year-badge">
         <span class="yr">25</span>
         <span class="yr-label">Years Legacy</span>
@@ -767,7 +760,7 @@
   <div class="founding-inner">
 
     <div class="founding-visual animate-in">
-      <img src="assets/antique_bangles.png" alt="MGS Jewellery Craftsmanship — Antique Bangles" class="founding-img">
+      <img src="assets/heritage_maang_tikka.png" alt="MGS Jewellery Craftsmanship — Heritage Maang Tikka" class="founding-img">
       <div class="founding-quote-card">
         <blockquote>"Gold is not just a metal. It is the language of trust between a craftsman and the family he serves."</blockquote>
         <cite>— MGS Master Goldsmith, Davanagere</cite>
@@ -916,47 +909,6 @@
       <p>Large jewellery chains buy jewellery from manufacturers, transport it across states, store it in warehouses, display it in air-conditioned showrooms with hundreds of staff — and pass every rupee of that cost to you as "making charges" and inflated wastage rates.</p>
       <p>At MGS, we are the <strong style="color:var(--gold-bright)">manufacturer</strong>. Our Senior Goldsmith crafts your jewellery on-site. When you buy from MGS, you pay for the gold — and only the gold.</p>
 
-      <table class="comparison-table animate-in">
-        <thead>
-          <tr>
-            <th>Factor</th>
-            <th>MGS Jewellery</th>
-            <th>Large Chain</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Wastage Rate</td>
-            <td>7.99% (Lowest)</td>
-            <td>12–18%</td>
-          </tr>
-          <tr>
-            <td>Making Charges</td>
-            <td>100% OFF (Offers)</td>
-            <td>₹300–600/gram</td>
-          </tr>
-          <tr>
-            <td>Gold Purity</td>
-            <td>HUID + BIS Certified</td>
-            <td>BIS Certified</td>
-          </tr>
-          <tr>
-            <td>Custom Making</td>
-            <td>Yes — On-site Goldsmith</td>
-            <td>Not Available</td>
-          </tr>
-          <tr>
-            <td>Old Gold Exchange</td>
-            <td>Extra ₹200/g Bonus</td>
-            <td>Standard Rate Only</td>
-          </tr>
-          <tr>
-            <td>Transparency</td>
-            <td>Full price breakdown</td>
-            <td>Bundled charges</td>
-          </tr>
-        </tbody>
-      </table>
     </div>
 
     <div class="makers-visual animate-in">
